@@ -188,6 +188,18 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .appt-table td:first-child{color:var(--text-soft);width:75px;padding-right:12px;white-space:nowrap}
 .appt-table a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
 
+/* ===== FLIGHT ===== */
+.flight-route{display:flex;align-items:center;gap:12px;margin-bottom:10px;font-family:-apple-system,sans-serif}
+.flight-airport{text-align:center}
+.flight-airport .code{font-size:20px;font-weight:700;color:var(--text);letter-spacing:.5px}
+.flight-airport .city{font-size:11px;color:var(--text-soft)}
+.flight-arrow{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px}
+.flight-arrow .line{width:100%;height:1px;background:var(--border);position:relative}
+.flight-arrow .line::after{content:'';position:absolute;right:0;top:-3px;border:4px solid transparent;border-left:5px solid var(--text-soft)}
+.flight-arrow .flight-num{font-size:11px;color:var(--text-soft);font-weight:600}
+.spa-menu-link{display:block;text-align:center;background:var(--cream);border:1.5px solid var(--border);color:var(--text);padding:14px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;font-family:-apple-system,sans-serif;margin-top:14px;min-height:48px;transition:border-color .15s}
+.spa-menu-link:hover{border-color:var(--sage)}
+
 /* ===== NOTES ===== */
 .notes-area{width:100%;border:1px solid var(--border);border-radius:12px;padding:16px;font-size:15px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;resize:vertical;min-height:80px;line-height:1.6}
 .notes-area:focus{outline:none;border-color:var(--warm)}
@@ -390,6 +402,41 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
   </div>
 </div>
 
+<!-- ===== DANIEL'S FLIGHTS ===== -->
+<div class="card collapsed">
+  <div class="card-label toggle" onclick="toggleCard(this)">Daniel's flights</div>
+
+  <div class="appt-block">
+    <div class="appt-date">Monday, March 9 — To Chicago</div>
+    <div class="flight-route">
+      <div class="flight-airport"><div class="code">DCA</div><div class="city">Washington, DC</div></div>
+      <div class="flight-arrow"><div class="flight-num">UA 511</div><div class="line"></div></div>
+      <div class="flight-airport"><div class="code">ORD</div><div class="city">Chicago, IL</div></div>
+    </div>
+    <table class="appt-table">
+      <tr><td>Depart</td><td>1:00 PM</td></tr>
+      <tr><td>Arrive</td><td>2:22 PM</td></tr>
+      <tr><td>Duration</td><td>2h 22m</td></tr>
+      <tr><td>Seat</td><td>3F — United First</td></tr>
+    </table>
+  </div>
+
+  <div class="appt-block">
+    <div class="appt-date">Tuesday, March 10 — Back to DC</div>
+    <div class="flight-route">
+      <div class="flight-airport"><div class="code">ORD</div><div class="city">Chicago, IL</div></div>
+      <div class="flight-arrow"><div class="flight-num">UA 3650</div><div class="line"></div></div>
+      <div class="flight-airport"><div class="code">DCA</div><div class="city">Washington, DC</div></div>
+    </div>
+    <table class="appt-table">
+      <tr><td>Depart</td><td>7:40 PM</td></tr>
+      <tr><td>Arrive</td><td>10:52 PM</td></tr>
+      <tr><td>Duration</td><td>2h 12m</td></tr>
+      <tr><td>Seat</td><td>4A — United First</td></tr>
+    </table>
+  </div>
+</div>
+
 <!-- ===== SPA ===== -->
 <div class="card" id="spaSection">
   <div class="card-label toggle" onclick="toggleCard(this)">The Spa</div>
@@ -402,6 +449,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
   <div class="carousel-dots" id="spaDots"></div>
   <h2>Your grounding spot</h2>
   <p class="spa-intro">The Waldorf spa — 14,000 sq ft of quiet. Not about fixing anything. Just somewhere to be still. Pick whatever sounds good and I'll handle the booking. Any 60+ minute treatment includes the pool, sauna, steam room, and terrace for the full day.</p>
+  <a href="https://na.spatime.com/wac60611/5133944/offering/5372368?types=1,0,4,8,16" target="_blank" class="spa-menu-link">View full spa menu & booking</a>
 
   <!-- VITALITY SIGNATURE -->
   <div class="spa-accordion" id="spa-cat-vitality">
