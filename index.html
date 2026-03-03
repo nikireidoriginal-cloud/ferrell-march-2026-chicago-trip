@@ -144,19 +144,23 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .spa-accordion.open .spa-acc-chevron{transform:rotate(180deg);color:var(--warm-deep)}
 .spa-acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .spa-accordion.open .spa-acc-body{max-height:3000px}
-.spa-item{display:flex;align-items:center;padding:13px 0;border-bottom:1px solid #f5f3f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px}
-.spa-item:last-child{border:none}
-.spa-item label{flex:1;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:44px}
-.spa-item input[type=checkbox]{width:22px;height:22px;accent-color:var(--sage);cursor:pointer;flex-shrink:0}
+.spa-treat{padding:10px 0;border-bottom:1px solid #f5f3f0}
+.spa-treat:last-child{border:none}
+.spa-treat-top{display:flex;align-items:flex-start;gap:12px;cursor:pointer;min-height:44px}
+.spa-treat-top input[type=checkbox]{width:22px;height:22px;accent-color:var(--sage);cursor:pointer;flex-shrink:0;margin-top:2px}
+.spa-treat-info{flex:1;min-width:0}
+.spa-treat-name{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;color:var(--text);line-height:1.4}
+.spa-treat-dur{font-size:13px;color:var(--text-soft);margin-left:6px}
+.spa-treat-desc{font-size:13px;color:var(--text-soft);line-height:1.4;margin-top:2px}
+.dur-pills{display:flex;gap:4px;align-items:center;padding-left:34px;margin-top:4px;margin-bottom:2px}
+.dur-pill{font-family:-apple-system,sans-serif;font-size:12px;padding:3px 10px;border-radius:14px;border:1px solid var(--border);background:#fff;color:var(--text-soft);cursor:pointer;white-space:nowrap;transition:all .15s;min-width:32px;text-align:center}
+.dur-pill.sel{background:var(--sage-light);border-color:var(--sage);color:var(--sage);font-weight:600}
+.dur-unit{font-size:12px;color:var(--text-soft);margin-left:2px}
 .spa-schedule{display:flex;gap:8px;padding:6px 0 10px 34px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;align-items:center;animation:fadeIn .25s ease}
 .spa-schedule input[type=text]{font-size:14px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-family:-apple-system,sans-serif;min-height:40px;flex:1}
 .spa-schedule input[type=text]:focus{outline:none;border-color:var(--warm)}
 .spa-schedule .sched-label{color:var(--text-soft);font-size:12px;white-space:nowrap}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.spa-item .meta{text-align:right;flex-shrink:0;margin-left:8px}
-.spa-item .dur{font-size:13px;color:var(--text-soft)}
-.spa-item .price{font-size:13px;color:var(--text-soft)}
-.spa-desc{font-size:13px;color:var(--text-soft);margin-left:34px;margin-top:-6px;margin-bottom:8px;font-style:italic;line-height:1.5}
 .spa-notes{width:100%;border:1px solid var(--border);border-radius:12px;padding:16px;font-size:15px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;resize:vertical;min-height:60px;margin-top:14px;line-height:1.6}
 .spa-notes:focus{outline:none;border-color:var(--warm)}
 .spa-summary{background:var(--sage-light);border-radius:12px;padding:18px;margin-top:14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;display:none}
@@ -451,155 +455,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
   <p class="spa-intro">The Waldorf spa — 14,000 sq ft of quiet. Not about fixing anything. Just somewhere to be still. Pick whatever sounds good and I'll handle the booking. Any 60+ minute treatment includes the pool, sauna, steam room, and terrace for the full day.</p>
   <a href="https://na.spatime.com/wac60611/5133944/offering/5372368?types=1,0,4,8,16" target="_blank" class="spa-menu-link">View full spa menu & booking</a>
 
-  <!-- VITALITY SIGNATURE -->
-  <div class="spa-accordion" id="spa-cat-vitality">
-    <div class="spa-acc-header" onclick="toggleSpaCat('vitality')">
-      <span><span class="spa-acc-title">Vitality Signature</span><span class="spa-acc-count" id="cnt-vitality"></span></span>
-      <span class="spa-acc-chevron">&#9662;</span>
-    </div>
-    <div class="spa-acc-body">
-      <div class="spa-desc" style="margin-left:0;margin-top:0;margin-bottom:12px">The Waldorf's signature experience — begins and ends with a Tibetan singing bowl ritual in a room infused with lavender and oakmoss. Warm and cool jade stones, shea butter, the works.</div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality 60 min" onchange="spaUpdate()"> Vitality</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality 90 min" onchange="spaUpdate()"> Vitality</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality Experience 120 min" onchange="spaUpdate()"> Vitality Experience</label><div class="meta"><span class="dur">120 min</span></div></div>
-      <div class="spa-desc">The full journey — body polish, hydrating wrap, custom massage, scalp ritual, singing bowl</div>
-    </div>
-  </div>
-
-  <!-- MASSAGE -->
-  <div class="spa-accordion" id="spa-cat-massage">
-    <div class="spa-acc-header" onclick="toggleSpaCat('massage')">
-      <span><span class="spa-acc-title">Massage</span><span class="spa-acc-count" id="cnt-massage"></span></span>
-      <span class="spa-acc-chevron">&#9662;</span>
-    </div>
-    <div class="spa-acc-body">
-      <div class="spa-item"><label><input type="checkbox" data-spa="Relaxation Massage 60 min" onchange="spaUpdate()"> Relaxation Massage</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Relaxation Massage 90 min" onchange="spaUpdate()"> Relaxation Massage</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">Customizable pressure with aromatic cashmere oils — pure relaxation</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Massage 60 min" onchange="spaUpdate()"> Sound Bath Massage</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Massage 90 min" onchange="spaUpdate()"> Sound Bath Massage</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">Full-body massage with singing bowls throughout — deeply grounding and meditative</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Himalayan Salt Stone Massage 60 min" onchange="spaUpdate()"> Himalayan Salt Stone</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Himalayan Salt Stone Massage 90 min" onchange="spaUpdate()"> Himalayan Salt Stone</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">Warm salt stones with 84 minerals — exfoliating and deeply grounding</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Stress Relief Massage with CBD 60 min" onchange="spaUpdate()"> Stress Relief with CBD</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Stress Relief Massage with CBD 90 min" onchange="spaUpdate()"> Stress Relief with CBD</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">CBD massage — muscles completely melt away stress</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Deep Tissue Massage 60 min" onchange="spaUpdate()"> Deep Tissue Massage</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Deep Tissue Massage 90 min" onchange="spaUpdate()"> Deep Tissue Massage</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">Deeper therapeutic work with heat therapy and arnica — relieves tension and inflammation</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Reiki 60 min" onchange="spaUpdate()"> Reiki</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-desc">Gentle energy therapy — light to no touch, restores balance and calm</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Ashiatsu Massage 60 min" onchange="spaUpdate()"> Ashiatsu Massage</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Ashiatsu Massage 90 min" onchange="spaUpdate()"> Ashiatsu Massage</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">Deep barefoot compression — the therapist uses overhead bars for balance</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Recovery Massage with Hypervolt 60 min" onchange="spaUpdate()"> Recovery with Hypervolt</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Recovery Massage with Hypervolt 90 min" onchange="spaUpdate()"> Recovery with Hypervolt</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">Therapeutic massage with percussive therapy for full muscle release</div>
-    </div>
-  </div>
-
-  <!-- FACIALS -->
-  <div class="spa-accordion" id="spa-cat-facials">
-    <div class="spa-acc-header" onclick="toggleSpaCat('facials')">
-      <span><span class="spa-acc-title">Facials</span><span class="spa-acc-count" id="cnt-facials"></span></span>
-      <span class="spa-acc-chevron">&#9662;</span>
-    </div>
-    <div class="spa-acc-body">
-      <div class="spa-item"><label><input type="checkbox" data-spa="Personalized Facial 60 min" onchange="spaUpdate()"> Personalized Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Personalized Facial 90 min" onchange="spaUpdate()"> Personalized Facial</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">Fully customized for your skin — enhanced with cool jade stones for inflammation</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Facial 60 min" onchange="spaUpdate()"> Sound Bath Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Facial 90 min" onchange="spaUpdate()"> Sound Bath Facial</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">Custom facial with singing bowl sound therapy layered throughout — deeply relaxing</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Diamond Glow Facial 60 min" onchange="spaUpdate()"> Diamond Glow Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Diamond Glow Facial 90 min" onchange="spaUpdate()"> Diamond Glow Facial</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">Patented diamond tip resurfacing — deeply cleans and rejuvenates</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 60 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 90 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 120 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">120 min</span></div></div>
-      <div class="spa-desc">Biologique Recherche — lymphatic drainage, muscle sculpting, cryotherapy</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="The Reparative Facial 60 min" onchange="spaUpdate()"> The Reparative Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-desc">Soothes sensitivity, reduces redness — strengthens your skin's barrier</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Ageless Facial 60 min" onchange="spaUpdate()"> Ageless Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Ageless Facial 90 min" onchange="spaUpdate()"> Ageless Facial</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">Pharmaceutical-grade hyaluronic acid strips — lifting and regenerating</div>
-    </div>
-  </div>
-
-  <!-- BODY -->
-  <div class="spa-accordion" id="spa-cat-body">
-    <div class="spa-acc-header" onclick="toggleSpaCat('body')">
-      <span><span class="spa-acc-title">Body Treatments</span><span class="spa-acc-count" id="cnt-body"></span></span>
-      <span class="spa-acc-chevron">&#9662;</span>
-    </div>
-    <div class="spa-acc-body">
-      <div class="spa-item"><label><input type="checkbox" data-spa="Calming Slumber 60 min" onchange="spaUpdate()"> Calming Slumber</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-desc">Anti-inflammatory CBD wrap with exfoliation and scalp massage — meant for deep rest</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Body Polish 60 min" onchange="spaUpdate()"> Body Polish</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-desc">Warm sugar scrub followed by hydrating shea butter — leaves skin impossibly soft</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Waldorf Délassant Body Ritual 90 min" onchange="spaUpdate()"> Waldorf Délassant Body Ritual</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-desc">The full indulgence — dry brushing, hydrating wrap, custom massage, warm oil scalp treatment</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Jet Lag Recovery 45 min" onchange="spaUpdate()"> Jet Lag Recovery</label><div class="meta"><span class="dur">45 min</span></div></div>
-      <div class="spa-desc">Lymphatic drainage, detoxifying abdominal massage, cooling leg wraps</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 60 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 90 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">90 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 120 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">120 min</span></div></div>
-      <div class="spa-desc">Lymphatic drainage and sculpting with Biologique Recherche products</div>
-    </div>
-  </div>
-
-  <!-- NAILS -->
-  <div class="spa-accordion" id="spa-cat-nails">
-    <div class="spa-acc-header" onclick="toggleSpaCat('nails')">
-      <span><span class="spa-acc-title">Nails</span><span class="spa-acc-count" id="cnt-nails"></span></span>
-      <span class="spa-acc-chevron">&#9662;</span>
-    </div>
-    <div class="spa-acc-body">
-      <div class="spa-item"><label><input type="checkbox" data-spa="Classic Manicure" onchange="spaUpdate()"> Classic Manicure</label><div class="meta"><span class="dur">30 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Luxury Manicure" onchange="spaUpdate()"> Luxury Manicure</label><div class="meta"><span class="dur">45 min</span></div></div>
-      <div class="spa-desc">Exfoliation, hydrating wrap, Himalayan salt stone hand & arm massage</div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Shellac Manicure" onchange="spaUpdate()"> Shellac Manicure</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-desc">Long-lasting gel finish — no smudging, no dry time</div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Antara CBD Manicure" onchange="spaUpdate()"> Antara CBD Manicure</label><div class="meta"><span class="dur">45 min</span></div></div>
-      <div class="spa-desc">CBD, warm shea butter, and paracress — nourishing and rejuvenating</div>
-
-      <div class="spa-item"><label><input type="checkbox" data-spa="Classic Pedicure" onchange="spaUpdate()"> Classic Pedicure</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Luxury Pedicure" onchange="spaUpdate()"> Luxury Pedicure</label><div class="meta"><span class="dur">75 min</span></div></div>
-      <div class="spa-desc">Personalized scent journey, exfoliation, hydrating wrap, Himalayan salt stone massage</div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Shellac Pedicure" onchange="spaUpdate()"> Shellac Pedicure</label><div class="meta"><span class="dur">60 min</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Antara CBD Pedicure" onchange="spaUpdate()"> Antara CBD Pedicure</label><div class="meta"><span class="dur">75 min</span></div></div>
-      <div class="spa-desc">Soul-to-sole CBD pedicure with hydrating shea butter and paracress</div>
-    </div>
-  </div>
-
-  <!-- SPIRITUAL -->
-  <div class="spa-accordion" id="spa-cat-spiritual">
-    <div class="spa-acc-header" onclick="toggleSpaCat('spiritual')">
-      <span><span class="spa-acc-title">Spiritual</span><span class="spa-acc-count" id="cnt-spiritual"></span></span>
-      <span class="spa-acc-chevron">&#9662;</span>
-    </div>
-    <div class="spa-acc-body">
-      <div class="spa-item"><label><input type="checkbox" data-spa="Tarot Reading" onchange="spaUpdate()"> Tarot Reading</label><div class="meta"><span class="dur">45 min</span></div></div>
-      <div class="spa-desc">Past, present, future — a session for self-discovery. Includes spa facility access.</div>
-    </div>
-  </div>
+  <div id="spaMenuBody"></div>
 
   <textarea class="spa-notes" id="spaNotes" placeholder="Any preferences? Timing, pressure, anything you like or want to avoid..." aria-label="Spa preferences"></textarea>
 
@@ -665,6 +521,7 @@ function defaults() {
     amex: false,
     cal: DAYS.map(d => ({ ...d, events: d.events.map(e => ({ ...e })) })),
     spa: [],
+    spaDur: {},
     spaSchedule: {},
     spaN: '',
     notes: '',
@@ -688,7 +545,7 @@ function save(toast) {
   const rv = document.querySelector('.rsvp-btn.sel[data-q="rsvp"]');
   S.rsvp = rv ? rv.dataset.v : '';
   S.spa = [];
-  document.querySelectorAll('[data-spa]').forEach(c => { if (c.checked) S.spa.push(c.dataset.spa); });
+  document.querySelectorAll('[data-treat]').forEach(c => { if (c.checked) S.spa.push(c.dataset.treat); });
   // collect schedule data
   if (!S.spaSchedule) S.spaSchedule = {};
   document.querySelectorAll('.spa-schedule').forEach(row => {
@@ -743,18 +600,109 @@ function toggleCard(el) {
   el.closest('.card').classList.toggle('collapsed');
 }
 
+// ===== SPA MENU DATA =====
+const SPA_MENU = [
+  { id: 'vitality', name: 'Vitality', items: [
+    { name: 'Vitality Massage', dur: [60, 90], desc: "Waldorf\u2019s signature \u2014 singing bowl ritual, lavender & oakmoss, warm jade stones, shea butter" },
+    { name: 'Vitality Experience', dur: [120], desc: 'The full journey \u2014 body polish, hydrating wrap, custom massage, scalp ritual, singing bowl' },
+  ]},
+  { id: 'beingwell', name: 'Being Well', items: [
+    { name: 'Relaxation Massage', dur: [60, 90], desc: 'Customizable pressure with aromatic cashmere oils' },
+    { name: 'Sound Bath Massage', dur: [60, 90], desc: 'Full-body massage with singing bowls \u2014 deeply grounding' },
+    { name: 'Himalayan Salt Stone Massage', dur: [60, 90], desc: 'Warm salt stones with 84 minerals \u2014 exfoliating and grounding' },
+    { name: 'Stress Relief Massage with CBD', dur: [60, 90], desc: 'CBD massage \u2014 melts away stress' },
+    { name: 'Deep Tissue Massage', dur: [60, 90], desc: 'Heat therapy and arnica \u2014 relieves tension and inflammation' },
+    { name: 'Reiki', dur: [60], desc: 'Light to no touch \u2014 restores balance and calm' },
+    { name: 'Ashiatsu Massage', dur: [60, 90], desc: 'Deep barefoot compression using overhead bars' },
+    { name: 'Recovery Massage with Hypervolt', dur: [60, 90], desc: 'Percussive therapy for full muscle release' },
+    { name: 'Prenatal Massage', dur: [60], desc: 'Nurturing massage designed for expectant mothers' },
+  ]},
+  { id: 'skin', name: 'Skin Atelier', items: [
+    { name: 'Personalized Facial', dur: [60, 90], desc: 'Fully customized \u2014 enhanced with cool jade stones' },
+    { name: 'Sound Bath Facial', dur: [60, 90], desc: 'Custom facial with singing bowl sound therapy' },
+    { name: 'Diamond Glow Facial', dur: [60, 90], desc: 'Diamond-tip resurfacing \u2014 deeply cleans and rejuvenates' },
+    { name: 'The Uplifting Facial', dur: [60, 90, 120], desc: 'Biologique Recherche \u2014 lymphatic drainage, sculpting, cryotherapy' },
+    { name: 'The Reparative Facial', dur: [60], desc: 'Soothes sensitivity, reduces redness, strengthens skin barrier' },
+    { name: 'Ageless Facial', dur: [60, 90], desc: 'Hyaluronic acid strips \u2014 lifting and regenerating' },
+  ]},
+  { id: 'body', name: 'Body', items: [
+    { name: 'Calming Slumber', dur: [60], desc: 'Anti-inflammatory CBD wrap with scalp massage \u2014 deep rest' },
+    { name: 'Body Polish', dur: [60], desc: 'Warm sugar scrub with hydrating shea butter' },
+    { name: 'Waldorf D\u00e9lassant Body Ritual', dur: [90], desc: 'Dry brushing, hydrating wrap, custom massage, scalp treatment' },
+    { name: 'Jet Lag Recovery', dur: [45], desc: 'Lymphatic drainage, abdominal massage, cooling leg wraps' },
+    { name: 'Slim & Sculpt', dur: [60, 90, 120], desc: 'Lymphatic drainage and sculpting with Biologique Recherche' },
+  ]},
+  { id: 'nails', name: 'Nail Suite', items: [
+    { name: 'Luxury Manicure', dur: [45], desc: 'Exfoliation, hydrating wrap, salt stone hand & arm massage' },
+    { name: 'Classic Manicure', dur: [30] },
+    { name: 'Shellac Manicure', dur: [60], desc: 'Long-lasting gel finish' },
+    { name: 'Antara CBD Manicure', dur: [45], desc: 'CBD, warm shea butter, and paracress' },
+    { name: 'Gentlemens Manicure', dur: [30] },
+    { name: 'Luxury Pedicure', dur: [75], desc: 'Scent journey, exfoliation, hydrating wrap, salt stone massage' },
+    { name: 'Classic Pedicure', dur: [60] },
+    { name: 'Shellac Pedicure', dur: [60], desc: 'Long-lasting gel finish' },
+    { name: 'Antara CBD Pedicure', dur: [75], desc: 'CBD with hydrating shea butter and paracress' },
+    { name: 'Gentlemens Pedicure', dur: [45] },
+    { name: 'File and Polish', dur: [15] },
+    { name: 'No Chip Shellac Removal', dur: [15] },
+  ]},
+  { id: 'spiritual', name: 'Spiritual', items: [
+    { name: 'Tarot Reading', dur: [45], desc: 'Past, present, future \u2014 self-discovery. Includes spa access.' },
+  ]},
+];
+
+function renderSpaMenu() {
+  const wrap = document.getElementById('spaMenuBody');
+  wrap.innerHTML = SPA_MENU.map(cat => {
+    const items = cat.items.map(item => {
+      const desc = item.desc ? `<div class="spa-treat-desc">${item.desc}</div>` : '';
+      let durHtml = '';
+      if (item.dur.length > 1) {
+        durHtml = `<div class="dur-pills">${item.dur.map((d, i) =>
+          `<button type="button" class="dur-pill${i === 0 ? ' sel' : ''}" onclick="pickDur(this)" data-d="${d}">${d}</button>`
+        ).join('')}<span class="dur-unit">min</span></div>`;
+      }
+      const durLabel = item.dur.length === 1 ? `<span class="spa-treat-dur">${item.dur[0]} min</span>` : '';
+      return `<div class="spa-treat">
+  <label class="spa-treat-top">
+    <input type="checkbox" data-treat="${item.name}" data-durs="${item.dur.join(',')}" onchange="spaUpdate()">
+    <div class="spa-treat-info">
+      <span class="spa-treat-name">${item.name}${durLabel}</span>
+      ${desc}
+    </div>
+  </label>
+  ${durHtml}
+</div>`;
+    }).join('');
+    return `<div class="spa-accordion" id="spa-cat-${cat.id}">
+  <div class="spa-acc-header" onclick="toggleSpaCat('${cat.id}')">
+    <span><span class="spa-acc-title">${cat.name}</span><span class="spa-acc-count" id="cnt-${cat.id}"></span></span>
+    <span class="spa-acc-chevron">&#9662;</span>
+  </div>
+  <div class="spa-acc-body">${items}</div>
+</div>`;
+  }).join('');
+}
+
 // ===== SPA ACCORDIONS =====
 function toggleSpaCat(cat) {
   document.getElementById('spa-cat-' + cat).classList.toggle('open');
 }
 
+function pickDur(btn) {
+  btn.closest('.dur-pills').querySelectorAll('.dur-pill').forEach(p => p.classList.remove('sel'));
+  btn.classList.add('sel');
+  const cb = btn.closest('.spa-treat').querySelector('input[type=checkbox]');
+  if (cb.checked) spaUpdate();
+}
+
 function updateSpaCounts() {
-  ['vitality','massage','facials','body','nails','spiritual'].forEach(cat => {
-    const el = document.getElementById('cnt-' + cat);
+  SPA_MENU.forEach(cat => {
+    const el = document.getElementById('cnt-' + cat.id);
     if (!el) return;
     let count = 0;
-    document.querySelectorAll('#spa-cat-' + cat + ' [data-spa]').forEach(c => { if (c.checked) count++; });
-    el.textContent = count > 0 ? (' · ' + count + ' selected') : '';
+    document.querySelectorAll('#spa-cat-' + cat.id + ' [data-treat]').forEach(c => { if (c.checked) count++; });
+    el.textContent = count > 0 ? (' \u00b7 ' + count + ' selected') : '';
   });
 }
 
@@ -816,12 +764,16 @@ function removeEvent(di, ei) {
 
 // ===== SPA =====
 function spaUpdate() {
+  if (!S.spaDur) S.spaDur = {};
   const picks = [];
-  document.querySelectorAll('[data-spa]').forEach(c => {
-    const name = c.dataset.spa;
-    const item = c.closest('.spa-item');
-    const existing = item.nextElementSibling && item.nextElementSibling.classList.contains('spa-schedule') ? item.nextElementSibling : null;
+  document.querySelectorAll('[data-treat]').forEach(c => {
+    const name = c.dataset.treat;
+    const card = c.closest('.spa-treat');
+    const existing = card.nextElementSibling && card.nextElementSibling.classList.contains('spa-schedule') ? card.nextElementSibling : null;
     if (c.checked) {
+      const selPill = card.querySelector('.dur-pill.sel');
+      const dur = selPill ? parseInt(selPill.dataset.d) : parseInt(c.dataset.durs.split(',')[0]);
+      S.spaDur[name] = dur;
       picks.push(name);
       if (!existing) {
         const row = document.createElement('div');
@@ -830,11 +782,12 @@ function spaUpdate() {
         const sched = (S.spaSchedule && S.spaSchedule[name]) || {};
         row.innerHTML = `<span class="sched-label">When?</span>`
           + `<input type="text" value="${sched.when||''}" placeholder="e.g. Sunday afternoon" oninput="schedChange()" aria-label="When for ${name}">`;
-        item.after(row);
+        card.after(row);
       }
     } else {
       if (existing) existing.remove();
       if (S.spaSchedule) delete S.spaSchedule[name];
+      delete S.spaDur[name];
     }
   });
   const box = document.getElementById('spaSummary');
@@ -844,8 +797,9 @@ function spaUpdate() {
     let h = '<table><thead><tr><th>Treatment</th><th style="text-align:right">When</th></tr></thead><tbody>';
     h += picks.map(s => {
       const sched = (S.spaSchedule && S.spaSchedule[s]) || {};
-      const when = sched.when || '—';
-      return `<tr><td class="spa-sum-name">${s}</td><td class="spa-sum-when">${when}</td></tr>`;
+      const when = sched.when || '\u2014';
+      const d = S.spaDur[s] ? ` (${S.spaDur[s]} min)` : '';
+      return `<tr><td class="spa-sum-name">${s}${d}</td><td class="spa-sum-when">${when}</td></tr>`;
     }).join('');
     h += '</tbody></table>';
     const n = document.getElementById('spaNotes').value;
@@ -948,8 +902,18 @@ function restore() {
     if (prompt) prompt.style.display = 'none';
   }
   if (S.spa && S.spa.length) S.spa.forEach(n => {
-    const c = document.querySelector(`[data-spa="${n}"]`);
-    if (c) c.checked = true;
+    const c = document.querySelector(`[data-treat="${n}"]`);
+    if (c) {
+      c.checked = true;
+      if (S.spaDur && S.spaDur[n]) {
+        const card = c.closest('.spa-treat');
+        const pill = card.querySelector(`.dur-pill[data-d="${S.spaDur[n]}"]`);
+        if (pill) {
+          card.querySelectorAll('.dur-pill').forEach(p => p.classList.remove('sel'));
+          pill.classList.add('sel');
+        }
+      }
+    }
   });
   if (S.spaN) document.getElementById('spaNotes').value = S.spaN;
   spaUpdate();
@@ -960,6 +924,7 @@ function restore() {
 }
 
 // ===== INIT =====
+renderSpaMenu();
 restore();
 renderActivity();
 initCarousel('hotelCarousel', 'hotelDots');
