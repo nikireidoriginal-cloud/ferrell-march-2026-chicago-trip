@@ -157,6 +157,19 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .fac-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .fac-tag{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;background:var(--cream);border:1px solid var(--border);padding:8px 14px;border-radius:16px;color:var(--text-soft)}
 
+/* ===== MAP ===== */
+.map-btn{display:block;text-align:center;background:var(--cream);border:1.5px solid var(--border);color:var(--text);padding:14px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;margin-bottom:20px;min-height:48px;transition:border-color .15s}
+.map-btn:hover{border-color:var(--sage)}
+
+/* ===== APPOINTMENT TABLE ===== */
+.appt-block{background:var(--cream);border-radius:12px;padding:18px;margin-bottom:12px}
+.appt-block:last-of-type{margin-bottom:0}
+.appt-date{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.appt-table{width:100%;border-collapse:collapse;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px}
+.appt-table td{padding:5px 0;vertical-align:top;line-height:1.5}
+.appt-table td:first-child{color:var(--text-soft);width:75px;padding-right:12px;white-space:nowrap}
+.appt-table a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+
 /* ===== NOTES ===== */
 .notes-area{width:100%;border:1px solid var(--border);border-radius:12px;padding:16px;font-size:15px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;resize:vertical;min-height:80px;line-height:1.6}
 .notes-area:focus{outline:none;border-color:var(--warm)}
@@ -192,9 +205,8 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 <div class="container">
 
 <!-- ===== PERSONAL NOTE ===== -->
-<div class="card message-card">
-  <p>I put this together for you. Not about the appointments — about having a beautiful, grounding place that's yours all week. Somewhere your soul can land. I'm with you the whole time, even from far away.</p>
-  <div class="sig">— with love</div>
+<div class="card" style="text-align:center;padding:32px 24px">
+  <p style="font-size:16px;color:var(--text);max-width:440px;margin:0 auto;line-height:1.7">Say yes and everything's taken care of — hotel, spa, all of it. I'm with you the whole week, even from far away.</p>
 </div>
 
 <!-- ===== THREE STEPS ===== -->
@@ -220,7 +232,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
       </div>
       <div class="highlight">
         <span class="hl-icon">🔥</span>
-        <div><strong>Corner One Bedroom Terrace Suite</strong><br><span>Fireplace, living room, private balcony with city views</span></div>
+        <div><strong>Corner One Bedroom Terrace Ste W/ Fireplace</strong><br><span>Living room, private terrace with city views</span></div>
       </div>
       <div class="highlight">
         <span class="hl-icon">✦</span>
@@ -268,13 +280,13 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
     <img src="property4.png" alt="Waldorf courtyard" loading="lazy">
   </div>
   <div class="carousel-dots" id="hotelDots"></div>
-  <h2>Waldorf Astoria Chicago</h2>
+  <h2><a href="https://www.hilton.com/en/hotels/chiwawa-waldorf-astoria-chicago/" target="_blank" style="color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)">Waldorf Astoria Chicago</a></h2>
   <p>11 E Walton St, Chicago, IL 60611</p>
   <div style="margin-top:16px">
     <div class="detail-row"><span class="label">Check-in</span><span>Friday, March 6</span></div>
     <div class="detail-row"><span class="label">Check-out</span><span>Tuesday, March 10</span></div>
     <div class="detail-row"><span class="label">Optional late stay</span><span>Wednesday, March 11</span></div>
-    <div class="detail-row"><span class="label">Room</span><span>Corner 1BR Terrace Suite w/ Fireplace</span></div>
+    <div class="detail-row"><span class="label">Room</span><span><a href="https://www.hilton.com/en/hotels/chiwawa-waldorf-astoria-chicago/rooms/" target="_blank" style="color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)">Corner One Bedroom Terrace Ste W/ Fireplace</a></span></div>
     <div class="detail-row"><span class="label">Confirmation #</span><span>TBD</span></div>
   </div>
   <div class="walk-note">
@@ -292,7 +304,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
     <img src="room3.png" alt="Private terrace" loading="lazy">
   </div>
   <div class="carousel-dots" id="roomDots"></div>
-  <h2>Corner One Bedroom Terrace Suite</h2>
+  <h2><a href="https://www.hilton.com/en/hotels/chiwawa-waldorf-astoria-chicago/rooms/" target="_blank" style="color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)">Corner One Bedroom Terrace Ste W/ Fireplace</a></h2>
   <p>Fireplace, living room, private terrace with city views — your own space to come back to whenever you need it.</p>
 </div>
 
@@ -321,6 +333,32 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
   </div>
 </div>
 
+<!-- ===== APPOINTMENTS ===== -->
+<div class="card">
+  <div class="card-label">Your appointments</div>
+  <a href="https://www.google.com/maps/dir/?api=1&origin=Waldorf+Astoria+Chicago,+11+E+Walton+St,+Chicago,+IL+60611&destination=675+N+St+Clair+St,+Chicago,+IL+60611&travelmode=walking" target="_blank" class="map-btn">📍 Open walking directions — Hotel to Northwestern</a>
+
+  <div class="appt-block">
+    <div class="appt-date">Saturday, March 7</div>
+    <table class="appt-table">
+      <tr><td>Time</td><td>12:00 PM CST</td></tr>
+      <tr><td>Location</td><td>NM Radiology</td></tr>
+      <tr><td>Address</td><td>676 N St Clair St, 3rd Floor<br>Arkes Pavilion<br>Chicago, IL 60611</td></tr>
+      <tr><td>Phone</td><td><a href="tel:3129269000">312-926-9000</a></td></tr>
+    </table>
+  </div>
+
+  <div class="appt-block">
+    <div class="appt-date">Tuesday, March 10</div>
+    <table class="appt-table">
+      <tr><td>Time</td><td>2:00 PM CDT</td></tr>
+      <tr><td>Location</td><td>NM Neuro Oncology</td></tr>
+      <tr><td>Address</td><td>675 N St Clair St, Suite 20-100<br>Galter Pavilion<br>Chicago, IL 60611</td></tr>
+      <tr><td>Phone</td><td><a href="tel:3126954360">312-695-4360</a></td></tr>
+    </table>
+  </div>
+</div>
+
 <!-- ===== SPA ===== -->
 <div class="card" id="spaSection">
   <div class="card-label">The Spa</div>
@@ -342,9 +380,9 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
     </div>
     <div class="spa-acc-body">
       <div class="spa-desc" style="margin-left:0;margin-top:0;margin-bottom:12px">The Waldorf's signature experience — begins and ends with a Tibetan singing bowl ritual in a room infused with lavender and oakmoss. Warm and cool jade stones, shea butter, the works.</div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality 60 min" onchange="spaUpdate()"> Vitality</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$275</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality 90 min" onchange="spaUpdate()"> Vitality</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$320</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality Experience 120 min" onchange="spaUpdate()"> Vitality Experience</label><div class="meta"><span class="dur">120 min</span><br><span class="price">$600</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality 60 min" onchange="spaUpdate()"> Vitality</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality 90 min" onchange="spaUpdate()"> Vitality</label><div class="meta"><span class="dur">90 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality Experience 120 min" onchange="spaUpdate()"> Vitality Experience</label><div class="meta"><span class="dur">120 min</span></div></div>
       <div class="spa-desc">The full journey — body polish, hydrating wrap, custom massage, scalp ritual, singing bowl</div>
     </div>
   </div>
@@ -356,35 +394,35 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
       <span class="spa-acc-chevron">&#9662;</span>
     </div>
     <div class="spa-acc-body">
-      <div class="spa-item"><label><input type="checkbox" data-spa="Relaxation Massage 60 min" onchange="spaUpdate()"> Relaxation Massage</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$220</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Relaxation Massage 90 min" onchange="spaUpdate()"> Relaxation Massage</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$315</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Relaxation Massage 60 min" onchange="spaUpdate()"> Relaxation Massage</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Relaxation Massage 90 min" onchange="spaUpdate()"> Relaxation Massage</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">Customizable pressure with aromatic cashmere oils — pure relaxation</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Massage 60 min" onchange="spaUpdate()"> Sound Bath Massage</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$250</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Massage 90 min" onchange="spaUpdate()"> Sound Bath Massage</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$335</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Massage 60 min" onchange="spaUpdate()"> Sound Bath Massage</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Massage 90 min" onchange="spaUpdate()"> Sound Bath Massage</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">Full-body massage with singing bowls throughout — deeply grounding and meditative</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Himalayan Salt Stone Massage 60 min" onchange="spaUpdate()"> Himalayan Salt Stone</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$250</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Himalayan Salt Stone Massage 90 min" onchange="spaUpdate()"> Himalayan Salt Stone</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$345</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Himalayan Salt Stone Massage 60 min" onchange="spaUpdate()"> Himalayan Salt Stone</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Himalayan Salt Stone Massage 90 min" onchange="spaUpdate()"> Himalayan Salt Stone</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">Warm salt stones with 84 minerals — exfoliating and deeply grounding</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Stress Relief Massage with CBD 60 min" onchange="spaUpdate()"> Stress Relief with CBD</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$270</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Stress Relief Massage with CBD 90 min" onchange="spaUpdate()"> Stress Relief with CBD</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$365</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Stress Relief Massage with CBD 60 min" onchange="spaUpdate()"> Stress Relief with CBD</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Stress Relief Massage with CBD 90 min" onchange="spaUpdate()"> Stress Relief with CBD</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">CBD massage — muscles completely melt away stress</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Deep Tissue Massage 60 min" onchange="spaUpdate()"> Deep Tissue Massage</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$250</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Deep Tissue Massage 90 min" onchange="spaUpdate()"> Deep Tissue Massage</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$345</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Deep Tissue Massage 60 min" onchange="spaUpdate()"> Deep Tissue Massage</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Deep Tissue Massage 90 min" onchange="spaUpdate()"> Deep Tissue Massage</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">Deeper therapeutic work with heat therapy and arnica — relieves tension and inflammation</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Reiki 60 min" onchange="spaUpdate()"> Reiki</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$215</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Reiki 60 min" onchange="spaUpdate()"> Reiki</label><div class="meta"><span class="dur">60 min</span></div></div>
       <div class="spa-desc">Gentle energy therapy — light to no touch, restores balance and calm</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Ashiatsu Massage 60 min" onchange="spaUpdate()"> Ashiatsu Massage</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$275</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Ashiatsu Massage 90 min" onchange="spaUpdate()"> Ashiatsu Massage</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$360</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Ashiatsu Massage 60 min" onchange="spaUpdate()"> Ashiatsu Massage</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Ashiatsu Massage 90 min" onchange="spaUpdate()"> Ashiatsu Massage</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">Deep barefoot compression — the therapist uses overhead bars for balance</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Recovery Massage with Hypervolt 60 min" onchange="spaUpdate()"> Recovery with Hypervolt</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$250</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Recovery Massage with Hypervolt 90 min" onchange="spaUpdate()"> Recovery with Hypervolt</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$335</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Recovery Massage with Hypervolt 60 min" onchange="spaUpdate()"> Recovery with Hypervolt</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Recovery Massage with Hypervolt 90 min" onchange="spaUpdate()"> Recovery with Hypervolt</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">Therapeutic massage with percussive therapy for full muscle release</div>
     </div>
   </div>
@@ -396,28 +434,28 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
       <span class="spa-acc-chevron">&#9662;</span>
     </div>
     <div class="spa-acc-body">
-      <div class="spa-item"><label><input type="checkbox" data-spa="Personalized Facial 60 min" onchange="spaUpdate()"> Personalized Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$260</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Personalized Facial 90 min" onchange="spaUpdate()"> Personalized Facial</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$345</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Personalized Facial 60 min" onchange="spaUpdate()"> Personalized Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Personalized Facial 90 min" onchange="spaUpdate()"> Personalized Facial</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">Fully customized for your skin — enhanced with cool jade stones for inflammation</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Facial 60 min" onchange="spaUpdate()"> Sound Bath Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$275</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Facial 90 min" onchange="spaUpdate()"> Sound Bath Facial</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$360</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Facial 60 min" onchange="spaUpdate()"> Sound Bath Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Facial 90 min" onchange="spaUpdate()"> Sound Bath Facial</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">Custom facial with singing bowl sound therapy layered throughout — deeply relaxing</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Diamond Glow Facial 60 min" onchange="spaUpdate()"> Diamond Glow Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$330</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Diamond Glow Facial 90 min" onchange="spaUpdate()"> Diamond Glow Facial</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$420</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Diamond Glow Facial 60 min" onchange="spaUpdate()"> Diamond Glow Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Diamond Glow Facial 90 min" onchange="spaUpdate()"> Diamond Glow Facial</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">Patented diamond tip resurfacing — deeply cleans and rejuvenates</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 60 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$345</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 90 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$425</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 120 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">120 min</span><br><span class="price">$580</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 60 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 90 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">90 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 120 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">120 min</span></div></div>
       <div class="spa-desc">Biologique Recherche — lymphatic drainage, muscle sculpting, cryotherapy</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="The Reparative Facial 60 min" onchange="spaUpdate()"> The Reparative Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$440</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="The Reparative Facial 60 min" onchange="spaUpdate()"> The Reparative Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
       <div class="spa-desc">Soothes sensitivity, reduces redness — strengthens your skin's barrier</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Ageless Facial 60 min" onchange="spaUpdate()"> Ageless Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$435</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Ageless Facial 90 min" onchange="spaUpdate()"> Ageless Facial</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$510</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Ageless Facial 60 min" onchange="spaUpdate()"> Ageless Facial</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Ageless Facial 90 min" onchange="spaUpdate()"> Ageless Facial</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">Pharmaceutical-grade hyaluronic acid strips — lifting and regenerating</div>
     </div>
   </div>
@@ -429,21 +467,21 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
       <span class="spa-acc-chevron">&#9662;</span>
     </div>
     <div class="spa-acc-body">
-      <div class="spa-item"><label><input type="checkbox" data-spa="Calming Slumber 60 min" onchange="spaUpdate()"> Calming Slumber</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$260</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Calming Slumber 60 min" onchange="spaUpdate()"> Calming Slumber</label><div class="meta"><span class="dur">60 min</span></div></div>
       <div class="spa-desc">Anti-inflammatory CBD wrap with exfoliation and scalp massage — meant for deep rest</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Body Polish 60 min" onchange="spaUpdate()"> Body Polish</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$245</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Body Polish 60 min" onchange="spaUpdate()"> Body Polish</label><div class="meta"><span class="dur">60 min</span></div></div>
       <div class="spa-desc">Warm sugar scrub followed by hydrating shea butter — leaves skin impossibly soft</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Waldorf Délassant Body Ritual 90 min" onchange="spaUpdate()"> Waldorf Délassant Body Ritual</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$525</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Waldorf Délassant Body Ritual 90 min" onchange="spaUpdate()"> Waldorf Délassant Body Ritual</label><div class="meta"><span class="dur">90 min</span></div></div>
       <div class="spa-desc">The full indulgence — dry brushing, hydrating wrap, custom massage, warm oil scalp treatment</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Jet Lag Recovery 45 min" onchange="spaUpdate()"> Jet Lag Recovery</label><div class="meta"><span class="dur">45 min</span><br><span class="price">$250</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Jet Lag Recovery 45 min" onchange="spaUpdate()"> Jet Lag Recovery</label><div class="meta"><span class="dur">45 min</span></div></div>
       <div class="spa-desc">Lymphatic drainage, detoxifying abdominal massage, cooling leg wraps</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 60 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$350</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 90 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$415</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 120 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">120 min</span><br><span class="price">$535</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 60 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 90 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">90 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 120 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">120 min</span></div></div>
       <div class="spa-desc">Lymphatic drainage and sculpting with Biologique Recherche products</div>
     </div>
   </div>
@@ -455,19 +493,19 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
       <span class="spa-acc-chevron">&#9662;</span>
     </div>
     <div class="spa-acc-body">
-      <div class="spa-item"><label><input type="checkbox" data-spa="Classic Manicure" onchange="spaUpdate()"> Classic Manicure</label><div class="meta"><span class="dur">30 min</span><br><span class="price">$60</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Luxury Manicure" onchange="spaUpdate()"> Luxury Manicure</label><div class="meta"><span class="dur">45 min</span><br><span class="price">$90</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Classic Manicure" onchange="spaUpdate()"> Classic Manicure</label><div class="meta"><span class="dur">30 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Luxury Manicure" onchange="spaUpdate()"> Luxury Manicure</label><div class="meta"><span class="dur">45 min</span></div></div>
       <div class="spa-desc">Exfoliation, hydrating wrap, Himalayan salt stone hand & arm massage</div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Shellac Manicure" onchange="spaUpdate()"> Shellac Manicure</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$90</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Shellac Manicure" onchange="spaUpdate()"> Shellac Manicure</label><div class="meta"><span class="dur">60 min</span></div></div>
       <div class="spa-desc">Long-lasting gel finish — no smudging, no dry time</div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Antara CBD Manicure" onchange="spaUpdate()"> Antara CBD Manicure</label><div class="meta"><span class="dur">45 min</span><br><span class="price">$105</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Antara CBD Manicure" onchange="spaUpdate()"> Antara CBD Manicure</label><div class="meta"><span class="dur">45 min</span></div></div>
       <div class="spa-desc">CBD, warm shea butter, and paracress — nourishing and rejuvenating</div>
 
-      <div class="spa-item"><label><input type="checkbox" data-spa="Classic Pedicure" onchange="spaUpdate()"> Classic Pedicure</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$105</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Luxury Pedicure" onchange="spaUpdate()"> Luxury Pedicure</label><div class="meta"><span class="dur">75 min</span><br><span class="price">$130</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Classic Pedicure" onchange="spaUpdate()"> Classic Pedicure</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Luxury Pedicure" onchange="spaUpdate()"> Luxury Pedicure</label><div class="meta"><span class="dur">75 min</span></div></div>
       <div class="spa-desc">Personalized scent journey, exfoliation, hydrating wrap, Himalayan salt stone massage</div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Shellac Pedicure" onchange="spaUpdate()"> Shellac Pedicure</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$120</span></div></div>
-      <div class="spa-item"><label><input type="checkbox" data-spa="Antara CBD Pedicure" onchange="spaUpdate()"> Antara CBD Pedicure</label><div class="meta"><span class="dur">75 min</span><br><span class="price">$150</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Shellac Pedicure" onchange="spaUpdate()"> Shellac Pedicure</label><div class="meta"><span class="dur">60 min</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Antara CBD Pedicure" onchange="spaUpdate()"> Antara CBD Pedicure</label><div class="meta"><span class="dur">75 min</span></div></div>
       <div class="spa-desc">Soul-to-sole CBD pedicure with hydrating shea butter and paracress</div>
     </div>
   </div>
@@ -479,7 +517,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
       <span class="spa-acc-chevron">&#9662;</span>
     </div>
     <div class="spa-acc-body">
-      <div class="spa-item"><label><input type="checkbox" data-spa="Tarot Reading" onchange="spaUpdate()"> Tarot Reading</label><div class="meta"><span class="dur">45 min</span><br><span class="price">$215</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Tarot Reading" onchange="spaUpdate()"> Tarot Reading</label><div class="meta"><span class="dur">45 min</span></div></div>
       <div class="spa-desc">Past, present, future — a session for self-discovery. Includes spa facility access.</div>
     </div>
   </div>
@@ -528,10 +566,10 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 const K = 'ferrell-chi-v5';
 const DAYS = [
   { name: 'Friday',    date: 'March 6',  short: 'Fri 3/6',  events: [{ time: 'PM', desc: 'Check in & settle in', type: 'personal' }] },
-  { name: 'Saturday',  date: 'March 7',  short: 'Sat 3/7',  events: [{ time: '12:00 PM', desc: 'MRI', type: 'appt' }] },
+  { name: 'Saturday',  date: 'March 7',  short: 'Sat 3/7',  events: [{ time: '12:00 PM', desc: 'NM Radiology — Arkes Pavilion, 3rd Fl', type: 'appt' }] },
   { name: 'Sunday',    date: 'March 8',  short: 'Sun 3/8',  events: [] },
   { name: 'Monday',    date: 'March 9',  short: 'Mon 3/9',  events: [] },
-  { name: 'Tuesday',   date: 'March 10', short: 'Tue 3/10', events: [{ time: '2:00 PM', desc: 'Oncology appointment', type: 'appt' }] },
+  { name: 'Tuesday',   date: 'March 10', short: 'Tue 3/10', events: [{ time: '2:00 PM', desc: 'NM Neuro Oncology — Galter Pavilion', type: 'appt' }] },
   { name: 'Wednesday', date: 'March 11', short: 'Wed 3/11', events: [] }
 ];
 
