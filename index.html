@@ -53,6 +53,38 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .message-card p{font-size:18px;line-height:1.9;color:var(--text);font-style:italic;max-width:460px;margin:0 auto}
 .message-card .sig{margin-top:16px;font-style:normal;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;color:var(--text-soft);letter-spacing:.5px}
 
+/* ===== STEPS CARD ===== */
+.steps-card{padding:32px 24px}
+.steps-card h2{font-size:20px;font-weight:400;margin-bottom:4px;text-align:center}
+.steps-subtitle{text-align:center;font-size:15px;color:var(--text-soft);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;margin-bottom:28px}
+.step{position:relative;padding-left:36px;margin-bottom:28px}
+.step:last-child{margin-bottom:0}
+.step-num{position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--sage);color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.step-when{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(--sage);font-weight:700;margin-bottom:4px}
+.step-title{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px}
+.step-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;color:var(--text-soft);line-height:1.7}
+
+.highlights{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+.highlight{display:flex;align-items:flex-start;gap:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;color:var(--text);padding:10px 14px;background:var(--cream);border-radius:10px}
+.highlight .hl-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.highlight strong{color:var(--text)}
+.highlight span{color:var(--text-soft)}
+
+.rsvp-opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.rsvp-btn{padding:14px 24px;border:2px solid var(--border);border-radius:24px;font-size:16px;cursor:pointer;background:#fff;transition:all .15s;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:50px}
+.rsvp-btn:hover{border-color:var(--sage)}
+.rsvp-btn.sel{background:var(--sage);color:#fff;border-color:var(--sage)}
+.rsvp-btn.primary-choice{border-color:var(--sage);font-weight:600}
+
+.amex-inline{margin-top:12px}
+.amex-cta{display:block;text-align:center;background:var(--text);color:#fff;padding:14px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;margin-top:12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;border:none;cursor:pointer;width:100%;letter-spacing:.3px;min-height:48px;line-height:48px;padding:0}
+.amex-cta:hover{opacity:.9}
+.amex-check{margin-top:10px;padding:14px 16px;border:1.5px solid var(--border);border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:all .15s;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;min-height:50px;-webkit-user-select:none;user-select:none}
+.amex-check:hover{border-color:var(--sage)}
+.amex-check.done{border-color:var(--sage);background:var(--sage-light)}
+.amex-check .tick{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;color:transparent;flex-shrink:0;transition:all .15s}
+.amex-check.done .tick{background:var(--sage);border-color:var(--sage);color:#fff}
+
 /* ===== PHOTO CAROUSEL ===== */
 .photo-carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;border-radius:12px;margin-bottom:16px;gap:0;scrollbar-width:none;position:relative}
 .photo-carousel::-webkit-scrollbar{display:none}
@@ -68,17 +100,6 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .walk-note{margin-top:14px;padding:14px 16px;background:var(--cream);border-radius:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;color:var(--text-soft);display:flex;gap:10px;align-items:center}
 .walk-note strong{color:var(--text)}
 
-/* ===== AMEX ===== */
-.amex-box{background:var(--gold-light);border:1px solid rgba(196,162,101,.25);border-radius:10px;padding:18px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.7}
-.amex-box strong{color:var(--warm-deep)}
-.amex-cta{display:block;text-align:center;background:var(--text);color:#fff;padding:14px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;margin-top:14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;border:none;cursor:pointer;width:100%;letter-spacing:.3px;min-height:48px;line-height:48px;padding:0}
-.amex-cta:hover{opacity:.9}
-.amex-check{margin-top:12px;padding:16px;border:1.5px solid var(--border);border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all .15s;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:16px;min-height:56px;-webkit-user-select:none;user-select:none}
-.amex-check:hover{border-color:var(--sage)}
-.amex-check.done{border-color:var(--sage);background:var(--sage-light)}
-.amex-check .tick{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;color:transparent;flex-shrink:0;transition:all .15s}
-.amex-check.done .tick{background:var(--sage);border-color:var(--sage);color:#fff}
-
 /* ===== CALENDAR ===== */
 .cal-carousel{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:4px 0 12px;scrollbar-width:none}
 .cal-carousel::-webkit-scrollbar{display:none}
@@ -91,7 +112,6 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .day-event{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;padding:10px 12px;border-radius:10px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
 .day-event.appt{background:rgba(200,164,156,.12)}
 .day-event.personal{background:var(--sage-light)}
-.day-event.open{background:#f5f3f0;color:var(--text-soft);font-style:italic}
 .event-time{font-weight:600;white-space:nowrap}
 .event-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
 .event-dot.appt{background:var(--blush-deep)}
@@ -107,11 +127,18 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .cal-add-btn{background:var(--sage);color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:15px;font-weight:600;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:44px}
 .scroll-hint{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;color:var(--text-soft);text-align:center;margin-top:6px}
 
-/* ===== SPA ===== */
+/* ===== SPA ACCORDIONS ===== */
 .spa-intro{font-size:15px;color:var(--text-soft);margin-bottom:16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7}
-.spa-note{font-size:13px;color:var(--text-soft);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-style:italic;margin-bottom:16px}
-.spa-cat{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--warm-deep);margin:22px 0 10px;padding-top:18px;border-top:1px solid var(--border)}
-.spa-cat:first-of-type{border:none;margin-top:4px;padding-top:0}
+.spa-note{font-size:13px;color:var(--text-soft);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-style:italic;margin-bottom:8px}
+.spa-accordion{border-bottom:1px solid var(--border)}
+.spa-accordion:last-of-type{border-bottom:none}
+.spa-acc-header{display:flex;justify-content:space-between;align-items:center;padding:18px 0;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-user-select:none;user-select:none}
+.spa-acc-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--warm-deep)}
+.spa-acc-count{font-size:12px;color:var(--sage);font-weight:600;margin-left:8px}
+.spa-acc-chevron{color:var(--text-soft);font-size:14px;transition:transform .3s;flex-shrink:0}
+.spa-accordion.open .spa-acc-chevron{transform:rotate(180deg);color:var(--warm-deep)}
+.spa-acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.spa-accordion.open .spa-acc-body{max-height:3000px}
 .spa-item{display:flex;align-items:center;padding:13px 0;border-bottom:1px solid #f5f3f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px}
 .spa-item:last-child{border:none}
 .spa-item label{flex:1;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:44px}
@@ -119,7 +146,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .spa-item .meta{text-align:right;flex-shrink:0;margin-left:8px}
 .spa-item .dur{font-size:13px;color:var(--text-soft)}
 .spa-item .price{font-size:13px;color:var(--text-soft)}
-.spa-desc{font-size:13px;color:var(--text-soft);margin-left:34px;margin-top:-6px;margin-bottom:8px;font-style:italic}
+.spa-desc{font-size:13px;color:var(--text-soft);margin-left:34px;margin-top:-6px;margin-bottom:8px;font-style:italic;line-height:1.5}
 .spa-notes{width:100%;border:1px solid var(--border);border-radius:12px;padding:16px;font-size:15px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;resize:vertical;min-height:60px;margin-top:14px;line-height:1.6}
 .spa-notes:focus{outline:none;border-color:var(--warm)}
 .spa-summary{background:var(--sage-light);border-radius:12px;padding:18px;margin-top:14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;display:none}
@@ -130,16 +157,9 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .fac-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .fac-tag{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;background:var(--cream);border:1px solid var(--border);padding:8px 14px;border-radius:16px;color:var(--text-soft)}
 
-/* ===== QUESTIONS ===== */
-.q-block{padding:18px;background:var(--cream);border-radius:12px;margin-bottom:12px}
-.q-block:last-child{margin-bottom:0}
-.q-block .ql{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:16px;font-weight:600;margin-bottom:12px}
-.q-opts{display:flex;gap:8px;flex-wrap:wrap}
-.q-btn{padding:12px 22px;border:1.5px solid var(--border);border-radius:24px;font-size:15px;cursor:pointer;background:#fff;transition:all .15s;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:48px}
-.q-btn:hover{border-color:var(--sage)}
-.q-btn.sel{background:var(--sage);color:#fff;border-color:var(--sage)}
-.q-area{width:100%;border:1px solid var(--border);border-radius:12px;padding:14px;font-size:15px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;margin-top:10px;resize:none;min-height:56px;line-height:1.6}
-.q-area:focus{outline:none;border-color:var(--warm)}
+/* ===== NOTES ===== */
+.notes-area{width:100%;border:1px solid var(--border);border-radius:12px;padding:16px;font-size:15px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;resize:vertical;min-height:80px;line-height:1.6}
+.notes-area:focus{outline:none;border-color:var(--warm)}
 
 /* ===== BOTTOM BAR ===== */
 .bottom-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:12px 16px;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:100}
@@ -149,13 +169,6 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .auto-save-note{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;color:var(--text-soft)}
 .last-saved{text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;color:var(--text-soft);margin-top:8px;min-height:18px}
 
-/* ===== MINI PHOTO GRID ===== */
-.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-radius:12px;overflow:hidden;margin-bottom:16px}
-.photo-grid img{width:100%;height:140px;object-fit:cover;display:block}
-.photo-grid img:first-child{border-radius:12px 0 0 12px}
-.photo-grid img:last-child{border-radius:0 12px 12px 0}
-
-/* ===== ACCESSIBILITY ===== */
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none !important}
@@ -180,8 +193,70 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 
 <!-- ===== PERSONAL NOTE ===== -->
 <div class="card message-card">
-  <p>Everything's taken care of. The room is booked, the details are handled, and this page has it all in one place. Your only job is to show up. I'm with you the whole week — even from far away.</p>
+  <p>I put this together for you. Not about the appointments — about having a beautiful, grounding place that's yours all week. Somewhere your soul can land. I'm with you the whole time, even from far away.</p>
   <div class="sig">— with love</div>
+</div>
+
+<!-- ===== THREE STEPS ===== -->
+<div class="card steps-card">
+  <h2>If you like this, here's all you need to do</h2>
+  <p class="steps-subtitle">Three things, at your own pace</p>
+
+  <!-- STEP 1: SAY YES -->
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-when">Right now</div>
+    <div class="step-title">Tell me yes</div>
+    <div class="step-body">I want you to have this. A corner suite with a fireplace and your own terrace, right in the Gold Coast — one of the most beautiful neighborhoods in Chicago. I'll book everything under my name and add you to the reservation. You just show up.</div>
+
+    <div class="highlights">
+      <div class="highlight">
+        <span class="hl-icon">🏡</span>
+        <div><strong>Gold Coast neighborhood</strong><br><span>Tree-lined streets, shops, Lake Michigan nearby</span></div>
+      </div>
+      <div class="highlight">
+        <span class="hl-icon">📍</span>
+        <div><strong>~10 min walk to Northwestern Medicine</strong><br><span>675 N St Clair St — everything's close</span></div>
+      </div>
+      <div class="highlight">
+        <span class="hl-icon">🔥</span>
+        <div><strong>Corner One Bedroom Terrace Suite</strong><br><span>Fireplace, living room, private balcony with city views</span></div>
+      </div>
+      <div class="highlight">
+        <span class="hl-icon">✦</span>
+        <div><strong>AMEX Platinum perks</strong><br><span>Early check-in, late checkout, room upgrade when available, complimentary breakfast</span></div>
+      </div>
+    </div>
+
+    <div class="rsvp-opts">
+      <button class="rsvp-btn primary-choice" data-q="rsvp" data-v="Yes, I'm in" onclick="pickQ(this)">Yes, I'm in</button>
+      <button class="rsvp-btn" data-q="rsvp" data-v="Let's talk first" onclick="pickQ(this)">Let's talk first</button>
+      <button class="rsvp-btn" data-q="rsvp" data-v="Not right now" onclick="pickQ(this)">Not right now</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: SPA -->
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-when">When you're ready</div>
+    <div class="step-title">Pick your spa treatments</div>
+    <div class="step-body">Scroll down to the spa section and check off whatever sounds good. This isn't about fixing anything — it's about giving yourself somewhere quiet to just be. I'll handle the booking.</div>
+  </div>
+
+  <!-- STEP 3: AMEX -->
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-when">Before Friday check-in</div>
+    <div class="step-title">Download the AMEX app</div>
+    <div class="step-body">I called the Waldorf and confirmed — a digital card on your phone is all you need to check in, even though I'm booking it under my name. Just download the app and make sure your card shows up. Takes 2 minutes.</div>
+    <div class="amex-inline">
+      <a href="https://apps.apple.com/us/app/amex/id362348516" target="_blank" class="amex-cta">Download AMEX App</a>
+      <div class="amex-check" id="amexCheck" onclick="toggleAmex()">
+        <div class="tick">✓</div>
+        <span>Done — I've got the app set up</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ===== HOTEL ===== -->
@@ -199,7 +274,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
     <div class="detail-row"><span class="label">Check-in</span><span>Friday, March 6</span></div>
     <div class="detail-row"><span class="label">Check-out</span><span>Tuesday, March 10</span></div>
     <div class="detail-row"><span class="label">Optional late stay</span><span>Wednesday, March 11</span></div>
-    <div class="detail-row"><span class="label">Room</span><span>TBD</span></div>
+    <div class="detail-row"><span class="label">Room</span><span>Corner 1BR Terrace Suite w/ Fireplace</span></div>
     <div class="detail-row"><span class="label">Confirmation #</span><span>TBD</span></div>
   </div>
   <div class="walk-note">
@@ -214,24 +289,11 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
   <div class="photo-carousel" id="roomCarousel">
     <img src="room1.png" alt="Bedroom with city view" loading="lazy">
     <img src="room2.png" alt="Living area with fireplace" loading="lazy">
-    <img src="room3.png" alt="Private balcony" loading="lazy">
+    <img src="room3.png" alt="Private terrace" loading="lazy">
   </div>
   <div class="carousel-dots" id="roomDots"></div>
-  <p>Fireplace, balcony, city views — your own space to come back to whenever you need it.</p>
-</div>
-
-<!-- ===== AMEX ===== -->
-<div class="card">
-  <div class="card-label">One thing before Friday</div>
-  <div class="amex-box">
-    <strong>Download the AMEX app and pull up your card.</strong><br>
-    I already called the Waldorf — a digital card on your phone is all you need for check-in. Just download the app and make sure your card shows up. Takes 2 minutes.
-  </div>
-  <a href="https://apps.apple.com/us/app/amex/id362348516" target="_blank" class="amex-cta">Download AMEX App</a>
-  <div class="amex-check" id="amexCheck" onclick="toggleAmex()">
-    <div class="tick">✓</div>
-    <span>Done — I've got the app set up</span>
-  </div>
+  <h2>Corner One Bedroom Terrace Suite</h2>
+  <p>Fireplace, living room, private terrace with city views — your own space to come back to whenever you need it.</p>
 </div>
 
 <!-- ===== YOUR WEEK ===== -->
@@ -260,7 +322,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 </div>
 
 <!-- ===== SPA ===== -->
-<div class="card">
+<div class="card" id="spaSection">
   <div class="card-label">The Spa</div>
   <div class="photo-carousel" id="spaCarousel">
     <img src="spa1.png" alt="Heated lap pool" loading="lazy">
@@ -269,35 +331,158 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
     <img src="spa3.png" alt="Salt stone massage" loading="lazy">
   </div>
   <div class="carousel-dots" id="spaDots"></div>
-  <h2>A little restoration</h2>
-  <p class="spa-intro">The Waldorf spa — 14,000 sq ft of quiet. Pick whatever sounds good and I'll handle the booking. Any 60+ minute treatment includes full access to the pool, sauna, steam room, and terrace for the day.</p>
-  <p class="spa-note">Prices are approximate — I'll confirm exact pricing when I book.</p>
+  <h2>Your grounding spot</h2>
+  <p class="spa-intro">The Waldorf spa — 14,000 sq ft of quiet. Not about fixing anything. Just somewhere to be still. Pick whatever sounds good and I'll handle the booking. Any 60+ minute treatment includes the pool, sauna, steam room, and terrace for the full day.</p>
 
-  <div class="spa-cat">Massage</div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="Waldorf Signature Massage" onchange="spaUpdate()"> Waldorf Signature Massage</label><div class="meta"><span class="dur">60 min</span><br><span class="price">~$230</span></div></div>
-  <div class="spa-desc">Their signature — customized pressure & technique to whatever you need</div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="Himalayan Salt Stone Massage" onchange="spaUpdate()"> Himalayan Salt Stone</label><div class="meta"><span class="dur">60 min</span><br><span class="price">~$250</span></div></div>
-  <div class="spa-desc">Warm salt stones — deeply relaxing and grounding</div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="Myofascial Release" onchange="spaUpdate()"> Myofascial Release</label><div class="meta"><span class="dur">60 min</span><br><span class="price">~$230</span></div></div>
-  <div class="spa-desc">Gentle, sustained pressure for deep tension release</div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="Couples Massage" onchange="spaUpdate()"> Couples Massage</label><div class="meta"><span class="dur">60 min</span><br><span class="price">~$340</span></div></div>
+  <!-- VITALITY SIGNATURE -->
+  <div class="spa-accordion" id="spa-cat-vitality">
+    <div class="spa-acc-header" onclick="toggleSpaCat('vitality')">
+      <span><span class="spa-acc-title">Vitality Signature</span><span class="spa-acc-count" id="cnt-vitality"></span></span>
+      <span class="spa-acc-chevron">&#9662;</span>
+    </div>
+    <div class="spa-acc-body">
+      <div class="spa-desc" style="margin-left:0;margin-top:0;margin-bottom:12px">The Waldorf's signature experience — begins and ends with a Tibetan singing bowl ritual in a room infused with lavender and oakmoss. Warm and cool jade stones, shea butter, the works.</div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality 60 min" onchange="spaUpdate()"> Vitality</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$275</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality 90 min" onchange="spaUpdate()"> Vitality</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$320</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Vitality Experience 120 min" onchange="spaUpdate()"> Vitality Experience</label><div class="meta"><span class="dur">120 min</span><br><span class="price">$600</span></div></div>
+      <div class="spa-desc">The full journey — body polish, hydrating wrap, custom massage, scalp ritual, singing bowl</div>
+    </div>
+  </div>
 
-  <div class="spa-cat">Facials</div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="Diamond Glow Facial" onchange="spaUpdate()"> Diamond Glow Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">~$280</span></div></div>
-  <div class="spa-desc">Deep cleanse + restore — their most popular facial</div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="SilkPeel Dermalinfusion" onchange="spaUpdate()"> SilkPeel Dermalinfusion</label><div class="meta"><span class="dur">90 min</span><br><span class="price">~$320</span></div></div>
-  <div class="spa-desc">Microdermabrasion + serum infusion — the full treatment</div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="Custom Facial" onchange="spaUpdate()"> Custom Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">~$240</span></div></div>
+  <!-- MASSAGE -->
+  <div class="spa-accordion" id="spa-cat-massage">
+    <div class="spa-acc-header" onclick="toggleSpaCat('massage')">
+      <span><span class="spa-acc-title">Massage</span><span class="spa-acc-count" id="cnt-massage"></span></span>
+      <span class="spa-acc-chevron">&#9662;</span>
+    </div>
+    <div class="spa-acc-body">
+      <div class="spa-item"><label><input type="checkbox" data-spa="Relaxation Massage 60 min" onchange="spaUpdate()"> Relaxation Massage</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$220</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Relaxation Massage 90 min" onchange="spaUpdate()"> Relaxation Massage</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$315</span></div></div>
+      <div class="spa-desc">Customizable pressure with aromatic cashmere oils — pure relaxation</div>
 
-  <div class="spa-cat">Body</div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="Aqua Zen Wrap" onchange="spaUpdate()"> Aqua Zen Wrap</label><div class="meta"><span class="dur">80 min</span><br><span class="price">~$280</span></div></div>
-  <div class="spa-desc">Full-body relaxation wrap — eases everything</div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="Body Scrub & Polish" onchange="spaUpdate()"> Body Scrub & Polish</label><div class="meta"><span class="dur">50 min</span><br><span class="price">~$200</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Massage 60 min" onchange="spaUpdate()"> Sound Bath Massage</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$250</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Massage 90 min" onchange="spaUpdate()"> Sound Bath Massage</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$335</span></div></div>
+      <div class="spa-desc">Full-body massage with singing bowls throughout — deeply grounding and meditative</div>
 
-  <div class="spa-cat">Hands & Feet</div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="Luxury Manicure" onchange="spaUpdate()"> Luxury Manicure</label><div class="meta"><span class="dur">45 min</span><br><span class="price">~$75</span></div></div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="Luxury Pedicure" onchange="spaUpdate()"> Luxury Pedicure</label><div class="meta"><span class="dur">60 min</span><br><span class="price">~$95</span></div></div>
-  <div class="spa-item"><label><input type="checkbox" data-spa="Mani + Pedi" onchange="spaUpdate()"> Mani + Pedi</label><div class="meta"><span class="dur">90 min</span><br><span class="price">~$155</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Himalayan Salt Stone Massage 60 min" onchange="spaUpdate()"> Himalayan Salt Stone</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$250</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Himalayan Salt Stone Massage 90 min" onchange="spaUpdate()"> Himalayan Salt Stone</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$345</span></div></div>
+      <div class="spa-desc">Warm salt stones with 84 minerals — exfoliating and deeply grounding</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Stress Relief Massage with CBD 60 min" onchange="spaUpdate()"> Stress Relief with CBD</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$270</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Stress Relief Massage with CBD 90 min" onchange="spaUpdate()"> Stress Relief with CBD</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$365</span></div></div>
+      <div class="spa-desc">CBD massage — muscles completely melt away stress</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Deep Tissue Massage 60 min" onchange="spaUpdate()"> Deep Tissue Massage</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$250</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Deep Tissue Massage 90 min" onchange="spaUpdate()"> Deep Tissue Massage</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$345</span></div></div>
+      <div class="spa-desc">Deeper therapeutic work with heat therapy and arnica — relieves tension and inflammation</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Reiki 60 min" onchange="spaUpdate()"> Reiki</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$215</span></div></div>
+      <div class="spa-desc">Gentle energy therapy — light to no touch, restores balance and calm</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Ashiatsu Massage 60 min" onchange="spaUpdate()"> Ashiatsu Massage</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$275</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Ashiatsu Massage 90 min" onchange="spaUpdate()"> Ashiatsu Massage</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$360</span></div></div>
+      <div class="spa-desc">Deep barefoot compression — the therapist uses overhead bars for balance</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Recovery Massage with Hypervolt 60 min" onchange="spaUpdate()"> Recovery with Hypervolt</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$250</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Recovery Massage with Hypervolt 90 min" onchange="spaUpdate()"> Recovery with Hypervolt</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$335</span></div></div>
+      <div class="spa-desc">Therapeutic massage with percussive therapy for full muscle release</div>
+    </div>
+  </div>
+
+  <!-- FACIALS -->
+  <div class="spa-accordion" id="spa-cat-facials">
+    <div class="spa-acc-header" onclick="toggleSpaCat('facials')">
+      <span><span class="spa-acc-title">Facials</span><span class="spa-acc-count" id="cnt-facials"></span></span>
+      <span class="spa-acc-chevron">&#9662;</span>
+    </div>
+    <div class="spa-acc-body">
+      <div class="spa-item"><label><input type="checkbox" data-spa="Personalized Facial 60 min" onchange="spaUpdate()"> Personalized Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$260</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Personalized Facial 90 min" onchange="spaUpdate()"> Personalized Facial</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$345</span></div></div>
+      <div class="spa-desc">Fully customized for your skin — enhanced with cool jade stones for inflammation</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Facial 60 min" onchange="spaUpdate()"> Sound Bath Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$275</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Sound Bath Facial 90 min" onchange="spaUpdate()"> Sound Bath Facial</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$360</span></div></div>
+      <div class="spa-desc">Custom facial with singing bowl sound therapy layered throughout — deeply relaxing</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Diamond Glow Facial 60 min" onchange="spaUpdate()"> Diamond Glow Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$330</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Diamond Glow Facial 90 min" onchange="spaUpdate()"> Diamond Glow Facial</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$420</span></div></div>
+      <div class="spa-desc">Patented diamond tip resurfacing — deeply cleans and rejuvenates</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 60 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$345</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 90 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$425</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="The Uplifting Facial 120 min" onchange="spaUpdate()"> The Uplifting Facial</label><div class="meta"><span class="dur">120 min</span><br><span class="price">$580</span></div></div>
+      <div class="spa-desc">Biologique Recherche — lymphatic drainage, muscle sculpting, cryotherapy</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="The Reparative Facial 60 min" onchange="spaUpdate()"> The Reparative Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$440</span></div></div>
+      <div class="spa-desc">Soothes sensitivity, reduces redness — strengthens your skin's barrier</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Ageless Facial 60 min" onchange="spaUpdate()"> Ageless Facial</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$435</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Ageless Facial 90 min" onchange="spaUpdate()"> Ageless Facial</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$510</span></div></div>
+      <div class="spa-desc">Pharmaceutical-grade hyaluronic acid strips — lifting and regenerating</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="spa-accordion" id="spa-cat-body">
+    <div class="spa-acc-header" onclick="toggleSpaCat('body')">
+      <span><span class="spa-acc-title">Body Treatments</span><span class="spa-acc-count" id="cnt-body"></span></span>
+      <span class="spa-acc-chevron">&#9662;</span>
+    </div>
+    <div class="spa-acc-body">
+      <div class="spa-item"><label><input type="checkbox" data-spa="Calming Slumber 60 min" onchange="spaUpdate()"> Calming Slumber</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$260</span></div></div>
+      <div class="spa-desc">Anti-inflammatory CBD wrap with exfoliation and scalp massage — meant for deep rest</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Body Polish 60 min" onchange="spaUpdate()"> Body Polish</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$245</span></div></div>
+      <div class="spa-desc">Warm sugar scrub followed by hydrating shea butter — leaves skin impossibly soft</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Waldorf Délassant Body Ritual 90 min" onchange="spaUpdate()"> Waldorf Délassant Body Ritual</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$525</span></div></div>
+      <div class="spa-desc">The full indulgence — dry brushing, hydrating wrap, custom massage, warm oil scalp treatment</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Jet Lag Recovery 45 min" onchange="spaUpdate()"> Jet Lag Recovery</label><div class="meta"><span class="dur">45 min</span><br><span class="price">$250</span></div></div>
+      <div class="spa-desc">Lymphatic drainage, detoxifying abdominal massage, cooling leg wraps</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 60 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$350</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 90 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">90 min</span><br><span class="price">$415</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Slim & Sculpt 120 min" onchange="spaUpdate()"> Slim & Sculpt</label><div class="meta"><span class="dur">120 min</span><br><span class="price">$535</span></div></div>
+      <div class="spa-desc">Lymphatic drainage and sculpting with Biologique Recherche products</div>
+    </div>
+  </div>
+
+  <!-- NAILS -->
+  <div class="spa-accordion" id="spa-cat-nails">
+    <div class="spa-acc-header" onclick="toggleSpaCat('nails')">
+      <span><span class="spa-acc-title">Nails</span><span class="spa-acc-count" id="cnt-nails"></span></span>
+      <span class="spa-acc-chevron">&#9662;</span>
+    </div>
+    <div class="spa-acc-body">
+      <div class="spa-item"><label><input type="checkbox" data-spa="Classic Manicure" onchange="spaUpdate()"> Classic Manicure</label><div class="meta"><span class="dur">30 min</span><br><span class="price">$60</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Luxury Manicure" onchange="spaUpdate()"> Luxury Manicure</label><div class="meta"><span class="dur">45 min</span><br><span class="price">$90</span></div></div>
+      <div class="spa-desc">Exfoliation, hydrating wrap, Himalayan salt stone hand & arm massage</div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Shellac Manicure" onchange="spaUpdate()"> Shellac Manicure</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$90</span></div></div>
+      <div class="spa-desc">Long-lasting gel finish — no smudging, no dry time</div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Antara CBD Manicure" onchange="spaUpdate()"> Antara CBD Manicure</label><div class="meta"><span class="dur">45 min</span><br><span class="price">$105</span></div></div>
+      <div class="spa-desc">CBD, warm shea butter, and paracress — nourishing and rejuvenating</div>
+
+      <div class="spa-item"><label><input type="checkbox" data-spa="Classic Pedicure" onchange="spaUpdate()"> Classic Pedicure</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$105</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Luxury Pedicure" onchange="spaUpdate()"> Luxury Pedicure</label><div class="meta"><span class="dur">75 min</span><br><span class="price">$130</span></div></div>
+      <div class="spa-desc">Personalized scent journey, exfoliation, hydrating wrap, Himalayan salt stone massage</div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Shellac Pedicure" onchange="spaUpdate()"> Shellac Pedicure</label><div class="meta"><span class="dur">60 min</span><br><span class="price">$120</span></div></div>
+      <div class="spa-item"><label><input type="checkbox" data-spa="Antara CBD Pedicure" onchange="spaUpdate()"> Antara CBD Pedicure</label><div class="meta"><span class="dur">75 min</span><br><span class="price">$150</span></div></div>
+      <div class="spa-desc">Soul-to-sole CBD pedicure with hydrating shea butter and paracress</div>
+    </div>
+  </div>
+
+  <!-- SPIRITUAL -->
+  <div class="spa-accordion" id="spa-cat-spiritual">
+    <div class="spa-acc-header" onclick="toggleSpaCat('spiritual')">
+      <span><span class="spa-acc-title">Spiritual</span><span class="spa-acc-count" id="cnt-spiritual"></span></span>
+      <span class="spa-acc-chevron">&#9662;</span>
+    </div>
+    <div class="spa-acc-body">
+      <div class="spa-item"><label><input type="checkbox" data-spa="Tarot Reading" onchange="spaUpdate()"> Tarot Reading</label><div class="meta"><span class="dur">45 min</span><br><span class="price">$215</span></div></div>
+      <div class="spa-desc">Past, present, future — a session for self-discovery. Includes spa facility access.</div>
+    </div>
+  </div>
 
   <textarea class="spa-notes" id="spaNotes" placeholder="Any preferences? Timing, pressure, anything you like or want to avoid..." aria-label="Spa preferences"></textarea>
 
@@ -322,29 +507,11 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
   </div>
 </div>
 
-<!-- ===== QUESTIONS ===== -->
+<!-- ===== OTHER NOTES ===== -->
 <div class="card">
-  <div class="card-label">A few things from me</div>
-
-  <div class="q-block">
-    <div class="ql">Can I go ahead and book everything?</div>
-    <div class="q-opts">
-      <button class="q-btn" data-q="booking" data-v="Yes, book it!" onclick="pickQ(this)">Yes, book it!</button>
-      <button class="q-btn" data-q="booking" data-v="Let's talk first" onclick="pickQ(this)">Let's talk first</button>
-      <button class="q-btn" data-q="booking" data-v="Not yet" onclick="pickQ(this)">Not yet</button>
-    </div>
-  </div>
-
-  <div class="q-block">
-    <div class="ql">When do you want spa time?</div>
-    <p style="font-size:14px;color:var(--text-soft);margin-bottom:8px;font-family:-apple-system,sans-serif">Pick your treatments above, then let me know timing:</p>
-    <textarea class="q-area" id="qTiming" placeholder="e.g. 'Sunday morning' or 'Saturday afternoon'" aria-label="Spa timing preference"></textarea>
-  </div>
-
-  <div class="q-block">
-    <div class="ql">Anything else on your mind?</div>
-    <textarea class="q-area" id="qElse" placeholder="Food, places you want to go, anything at all..." aria-label="Additional notes"></textarea>
-  </div>
+  <div class="card-label">Other notes or requests</div>
+  <p style="margin-bottom:12px">Food, places you want to go, questions, anything at all.</p>
+  <textarea class="notes-area" id="otherNotes" placeholder="Write anything here..." aria-label="Other notes and requests"></textarea>
 </div>
 
 <div class="last-saved" id="lastSaved"></div>
@@ -358,7 +525,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 </div>
 
 <script>
-const K = 'ferrell-chi-v3';
+const K = 'ferrell-chi-v5';
 const DAYS = [
   { name: 'Friday',    date: 'March 6',  short: 'Fri 3/6',  events: [{ time: 'PM', desc: 'Check in & settle in', type: 'personal' }] },
   { name: 'Saturday',  date: 'March 7',  short: 'Sat 3/7',  events: [{ time: '12:00 PM', desc: 'MRI', type: 'appt' }] },
@@ -372,11 +539,12 @@ let S = load();
 
 function defaults() {
   return {
+    rsvp: '',
     amex: false,
     cal: DAYS.map(d => ({ ...d, events: d.events.map(e => ({ ...e })) })),
     spa: [],
     spaN: '',
-    q: { book: '', timing: '', other: '' },
+    notes: '',
     ts: null
   };
 }
@@ -393,16 +561,12 @@ function load() {
 }
 
 function save(toast) {
-  // spa
+  const rv = document.querySelector('.rsvp-btn.sel[data-q="rsvp"]');
+  S.rsvp = rv ? rv.dataset.v : '';
   S.spa = [];
   document.querySelectorAll('[data-spa]').forEach(c => { if (c.checked) S.spa.push(c.dataset.spa); });
   S.spaN = document.getElementById('spaNotes').value;
-  // questions
-  const bk = document.querySelector('.q-btn.sel[data-q="booking"]');
-  S.q.book = bk ? bk.dataset.v : '';
-  S.q.timing = document.getElementById('qTiming').value;
-  S.q.other = document.getElementById('qElse').value;
-  // amex
+  S.notes = document.getElementById('otherNotes').value;
   S.amex = document.getElementById('amexCheck').classList.contains('done');
   S.ts = new Date().toISOString();
   localStorage.setItem(K, JSON.stringify(S));
@@ -422,16 +586,29 @@ function updateTS() {
   }
 }
 
-// auto-save
 let st = null;
 function as() { clearTimeout(st); st = setTimeout(() => save(false), 400); }
 document.addEventListener('input', as);
 document.addEventListener('change', as);
 
-// amex
 function toggleAmex() {
   document.getElementById('amexCheck').classList.toggle('done');
   as();
+}
+
+// ===== SPA ACCORDIONS =====
+function toggleSpaCat(cat) {
+  document.getElementById('spa-cat-' + cat).classList.toggle('open');
+}
+
+function updateSpaCounts() {
+  ['vitality','massage','facials','body','nails','spiritual'].forEach(cat => {
+    const el = document.getElementById('cnt-' + cat);
+    if (!el) return;
+    let count = 0;
+    document.querySelectorAll('#spa-cat-' + cat + ' [data-spa]').forEach(c => { if (c.checked) count++; });
+    el.textContent = count > 0 ? (' · ' + count + ' selected') : '';
+  });
 }
 
 // ===== CALENDAR =====
@@ -454,11 +631,9 @@ function renderCal() {
     return `<div class="day-card"><div class="day-header"><div><span class="day-name">${d.name}</span></div><span class="day-date">${d.date}</span>${tag}</div><div class="day-events">${evHTML}</div></div>`;
   }).join('');
 
-  // dots
   const dots = document.getElementById('calDots');
   dots.innerHTML = S.cal.map((_, i) => `<div class="cal-dot-nav${i === 0 ? ' active' : ''}"></div>`).join('');
 
-  // scroll observer
   const cards = wrap.querySelectorAll('.day-card');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(en => {
@@ -505,14 +680,15 @@ function spaUpdate() {
   } else {
     box.classList.remove('vis');
   }
+  updateSpaCounts();
   as();
 }
 
-// questions
 function pickQ(btn) {
   const q = btn.dataset.q;
-  document.querySelectorAll(`.q-btn[data-q="${q}"]`).forEach(b => b.classList.remove('sel'));
-  btn.classList.add('sel');
+  const wasSelected = btn.classList.contains('sel');
+  document.querySelectorAll(`.rsvp-btn[data-q="${q}"]`).forEach(b => b.classList.remove('sel'));
+  if (!wasSelected) btn.classList.add('sel');
   as();
 }
 
@@ -521,14 +697,11 @@ function initCarousel(carouselId, dotsId) {
   const carousel = document.getElementById(carouselId);
   const dotsContainer = document.getElementById(dotsId);
   if (!carousel || !dotsContainer) return;
-
   const images = carousel.querySelectorAll('img');
   if (images.length <= 1) { dotsContainer.style.display = 'none'; return; }
-
   dotsContainer.innerHTML = [...images].map((_, i) =>
     `<div class="carousel-dot${i === 0 ? ' active' : ''}"></div>`
   ).join('');
-
   const obs = new IntersectionObserver(entries => {
     entries.forEach(en => {
       if (en.isIntersecting) {
@@ -544,18 +717,17 @@ function initCarousel(carouselId, dotsId) {
 
 // ===== RESTORE STATE =====
 function restore() {
+  if (S.rsvp) {
+    const b = document.querySelector(`.rsvp-btn[data-q="rsvp"][data-v="${S.rsvp}"]`);
+    if (b) b.classList.add('sel');
+  }
   if (S.spa && S.spa.length) S.spa.forEach(n => {
     const c = document.querySelector(`[data-spa="${n}"]`);
     if (c) c.checked = true;
   });
   if (S.spaN) document.getElementById('spaNotes').value = S.spaN;
   spaUpdate();
-  if (S.q.book) {
-    const b = document.querySelector(`.q-btn[data-q="booking"][data-v="${S.q.book}"]`);
-    if (b) b.classList.add('sel');
-  }
-  if (S.q.timing) document.getElementById('qTiming').value = S.q.timing;
-  if (S.q.other) document.getElementById('qElse').value = S.q.other;
+  if (S.notes) document.getElementById('otherNotes').value = S.notes;
   if (S.amex) document.getElementById('amexCheck').classList.add('done');
   renderCal();
   updateTS();
