@@ -143,6 +143,12 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .spa-item:last-child{border:none}
 .spa-item label{flex:1;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:44px}
 .spa-item input[type=checkbox]{width:22px;height:22px;accent-color:var(--sage);cursor:pointer;flex-shrink:0}
+.spa-schedule{display:flex;gap:8px;padding:6px 0 10px 34px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;align-items:center;animation:fadeIn .25s ease}
+.spa-schedule select,.spa-schedule input{font-size:14px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-family:-apple-system,sans-serif;min-height:40px}
+.spa-schedule select{flex:1;max-width:130px}
+.spa-schedule input[type=time]{flex:1;max-width:120px}
+.spa-schedule .sched-label{color:var(--text-soft);font-size:12px;white-space:nowrap}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 .spa-item .meta{text-align:right;flex-shrink:0;margin-left:8px}
 .spa-item .dur{font-size:13px;color:var(--text-soft)}
 .spa-item .price{font-size:13px;color:var(--text-soft)}
@@ -598,6 +604,7 @@ function defaults() {
     amex: false,
     cal: DAYS.map(d => ({ ...d, events: d.events.map(e => ({ ...e })) })),
     spa: [],
+    spaSchedule: {},
     spaN: '',
     notes: '',
     ts: null
@@ -621,6 +628,14 @@ function save(toast) {
   S.rsvp = rv ? rv.dataset.v : '';
   S.spa = [];
   document.querySelectorAll('[data-spa]').forEach(c => { if (c.checked) S.spa.push(c.dataset.spa); });
+  // collect schedule data
+  if (!S.spaSchedule) S.spaSchedule = {};
+  document.querySelectorAll('.spa-schedule').forEach(row => {
+    const name = row.dataset.schedFor;
+    S.spaSchedule[name] = { day: row.querySelector('select').value, time: row.querySelector('input[type=time]').value };
+  });
+  // clean up schedule for unchecked items
+  Object.keys(S.spaSchedule).forEach(k => { if (!S.spa.includes(k)) delete S.spaSchedule[k]; });
   S.spaN = document.getElementById('spaNotes').value;
   S.notes = document.getElementById('otherNotes').value;
   S.amex = document.getElementById('amexCheck').classList.contains('done');
@@ -735,12 +750,50 @@ function removeEvent(di, ei) {
 // ===== SPA =====
 function spaUpdate() {
   const picks = [];
-  document.querySelectorAll('[data-spa]').forEach(c => { if (c.checked) picks.push(c.dataset.spa); });
+  document.querySelectorAll('[data-spa]').forEach(c => {
+    const name = c.dataset.spa;
+    const item = c.closest('.spa-item');
+    const existing = item.nextElementSibling && item.nextElementSibling.classList.contains('spa-schedule') ? item.nextElementSibling : null;
+    if (c.checked) {
+      picks.push(name);
+      if (!existing) {
+        const row = document.createElement('div');
+        row.className = 'spa-schedule';
+        row.dataset.schedFor = name;
+        const sched = (S.spaSchedule && S.spaSchedule[name]) || {};
+        row.innerHTML = `<span class="sched-label">When?</span>`
+          + `<select onchange="schedChange()" aria-label="Day for ${name}">`
+          + `<option value="">Day...</option>`
+          + `<option value="Fri 3/6"${sched.day==='Fri 3/6'?' selected':''}>Fri 3/6</option>`
+          + `<option value="Sat 3/7"${sched.day==='Sat 3/7'?' selected':''}>Sat 3/7</option>`
+          + `<option value="Sun 3/8"${sched.day==='Sun 3/8'?' selected':''}>Sun 3/8</option>`
+          + `<option value="Mon 3/9"${sched.day==='Mon 3/9'?' selected':''}>Mon 3/9</option>`
+          + `<option value="Tue 3/10"${sched.day==='Tue 3/10'?' selected':''}>Tue 3/10</option>`
+          + `<option value="Wed 3/11"${sched.day==='Wed 3/11'?' selected':''}>Wed 3/11</option>`
+          + `</select>`
+          + `<input type="time" value="${sched.time||''}" onchange="schedChange()" aria-label="Time for ${name}">`;
+        item.after(row);
+      }
+    } else {
+      if (existing) existing.remove();
+      if (S.spaSchedule) delete S.spaSchedule[name];
+    }
+  });
   const box = document.getElementById('spaSummary');
   const list = document.getElementById('spaSummaryList');
   if (picks.length) {
     box.classList.add('vis');
-    let h = picks.map(s => `<div style="padding:3px 0;font-family:-apple-system,sans-serif">· ${s}</div>`).join('');
+    let h = picks.map(s => {
+      const sched = (S.spaSchedule && S.spaSchedule[s]) || {};
+      let when = '';
+      if (sched.day || sched.time) {
+        const parts = [];
+        if (sched.day) parts.push(sched.day);
+        if (sched.time) { try { parts.push(new Date('2026-01-01T'+sched.time).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})); } catch(e){ parts.push(sched.time); } }
+        when = ` — <span style="color:var(--sage)">${parts.join(' at ')}</span>`;
+      }
+      return `<div style="padding:3px 0;font-family:-apple-system,sans-serif">· ${s}${when}</div>`;
+    }).join('');
     const n = document.getElementById('spaNotes').value;
     if (n) h += `<div style="margin-top:8px;font-style:italic;color:var(--text-soft)">"${n}"</div>`;
     list.innerHTML = h;
@@ -749,6 +802,23 @@ function spaUpdate() {
   }
   updateSpaCounts();
   as();
+}
+
+function schedChange() {
+  // collect all schedule data from DOM
+  if (!S.spaSchedule) S.spaSchedule = {};
+  document.querySelectorAll('.spa-schedule').forEach(row => {
+    const name = row.dataset.schedFor;
+    const day = row.querySelector('select').value;
+    const time = row.querySelector('input[type=time]').value;
+    const prev = S.spaSchedule[name] || {};
+    S.spaSchedule[name] = { day, time };
+    if (day && day !== prev.day) logChange('Spa schedule: ' + name + ' → ' + day);
+    if (time && time !== prev.time) {
+      try { const t = new Date('2026-01-01T'+time).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}); logChange('Spa time: ' + name + ' → ' + t); } catch(e){}
+    }
+  });
+  spaUpdate();
 }
 
 function pickQ(btn) {
