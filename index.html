@@ -152,10 +152,9 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .spa-treat-name{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;color:var(--text);line-height:1.4}
 .spa-treat-dur{font-size:13px;color:var(--text-soft);margin-left:6px}
 .spa-treat-desc{font-size:13px;color:var(--text-soft);line-height:1.4;margin-top:2px}
-.dur-pills{display:flex;gap:4px;align-items:center;padding-left:34px;margin-top:4px;margin-bottom:2px}
-.dur-pill{font-family:-apple-system,sans-serif;font-size:12px;padding:3px 10px;border-radius:14px;border:1px solid var(--border);background:#fff;color:var(--text-soft);cursor:pointer;white-space:nowrap;transition:all .15s;min-width:32px;text-align:center}
-.dur-pill.sel{background:var(--sage-light);border-color:var(--sage);color:var(--sage);font-weight:600}
-.dur-unit{font-size:12px;color:var(--text-soft);margin-left:2px}
+.dur-radios{display:flex;gap:10px;align-items:center;padding-left:34px;margin-top:6px;margin-bottom:4px;flex-wrap:wrap}
+.dur-radios label{display:flex;align-items:center;gap:5px;font-family:-apple-system,sans-serif;font-size:14px;color:var(--text-soft);cursor:pointer}
+.dur-radios input[type=radio]{width:16px;height:16px;accent-color:var(--sage);cursor:pointer}
 .spa-schedule{display:flex;gap:8px;padding:6px 0 10px 34px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;align-items:center;animation:fadeIn .25s ease}
 .spa-schedule input[type=text]{font-size:14px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-family:-apple-system,sans-serif;min-height:40px;flex:1}
 .spa-schedule input[type=text]:focus{outline:none;border-color:var(--warm)}
@@ -656,11 +655,12 @@ function renderSpaMenu() {
   wrap.innerHTML = SPA_MENU.map(cat => {
     const items = cat.items.map(item => {
       const desc = item.desc ? `<div class="spa-treat-desc">${item.desc}</div>` : '';
+      const rName = item.name.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
       let durHtml = '';
       if (item.dur.length > 1) {
-        durHtml = `<div class="dur-pills">${item.dur.map((d, i) =>
-          `<button type="button" class="dur-pill${i === 0 ? ' sel' : ''}" onclick="pickDur(this)" data-d="${d}">${d}</button>`
-        ).join('')}<span class="dur-unit">min</span></div>`;
+        durHtml = `<div class="dur-radios">${item.dur.map((d, i) =>
+          `<label><input type="radio" name="dur-${rName}" value="${d}"${i === 0 ? ' checked' : ''} onchange="durChange(this)"> ${d} min</label>`
+        ).join('')}</div>`;
       }
       const durLabel = item.dur.length === 1 ? `<span class="spa-treat-dur">${item.dur[0]} min</span>` : '';
       return `<div class="spa-treat">
@@ -689,10 +689,8 @@ function toggleSpaCat(cat) {
   document.getElementById('spa-cat-' + cat).classList.toggle('open');
 }
 
-function pickDur(btn) {
-  btn.closest('.dur-pills').querySelectorAll('.dur-pill').forEach(p => p.classList.remove('sel'));
-  btn.classList.add('sel');
-  const cb = btn.closest('.spa-treat').querySelector('input[type=checkbox]');
+function durChange(radio) {
+  const cb = radio.closest('.spa-treat').querySelector('input[type=checkbox]');
   if (cb.checked) spaUpdate();
 }
 
@@ -771,8 +769,8 @@ function spaUpdate() {
     const card = c.closest('.spa-treat');
     const existing = card.nextElementSibling && card.nextElementSibling.classList.contains('spa-schedule') ? card.nextElementSibling : null;
     if (c.checked) {
-      const selPill = card.querySelector('.dur-pill.sel');
-      const dur = selPill ? parseInt(selPill.dataset.d) : parseInt(c.dataset.durs.split(',')[0]);
+      const selRadio = card.querySelector('.dur-radios input[type=radio]:checked');
+      const dur = selRadio ? parseInt(selRadio.value) : parseInt(c.dataset.durs.split(',')[0]);
       S.spaDur[name] = dur;
       picks.push(name);
       if (!existing) {
@@ -907,11 +905,8 @@ function restore() {
       c.checked = true;
       if (S.spaDur && S.spaDur[n]) {
         const card = c.closest('.spa-treat');
-        const pill = card.querySelector(`.dur-pill[data-d="${S.spaDur[n]}"]`);
-        if (pill) {
-          card.querySelectorAll('.dur-pill').forEach(p => p.classList.remove('sel'));
-          pill.classList.add('sel');
-        }
+        const radio = card.querySelector(`.dur-radios input[value="${S.spaDur[n]}"]`);
+        if (radio) radio.checked = true;
       }
     }
   });
