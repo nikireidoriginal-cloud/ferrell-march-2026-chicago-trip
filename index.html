@@ -79,7 +79,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .rsvp-btn{padding:14px 24px;border:2px solid var(--border);border-radius:24px;font-size:16px;cursor:pointer;background:#fff;transition:all .15s;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:50px}
 .rsvp-btn:hover{border-color:var(--sage)}
 .rsvp-btn.sel{background:var(--sage);color:#fff;border-color:var(--sage)}
-.rsvp-btn.primary-choice{border-color:var(--sage);font-weight:600}
+.rsvp-btn.primary-choice{font-weight:600}
 
 .amex-inline{margin-top:12px}
 .amex-cta{display:block;text-align:center;background:var(--text);color:#fff;padding:14px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;margin-top:12px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;border:none;cursor:pointer;width:100%;letter-spacing:.3px;min-height:48px;line-height:48px;padding:0}
@@ -275,8 +275,9 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
       </div>
     </div>
 
+    <div id="rsvpPrompt" class="rsvp-prompt" style="font-family:-apple-system,sans-serif;font-size:13px;color:var(--sage);font-weight:600;margin-top:16px;margin-bottom:8px">Pick one:</div>
     <div class="rsvp-opts">
-      <button class="rsvp-btn primary-choice" data-q="rsvp" data-v="Yes, I'm in" onclick="pickQ(this)">Yes, I'm in</button>
+      <button class="rsvp-btn" data-q="rsvp" data-v="Yes, I'm in" onclick="pickQ(this)">Yes, I'm in</button>
       <button class="rsvp-btn" data-q="rsvp" data-v="Let's talk first" onclick="pickQ(this)">Let's talk first</button>
       <button class="rsvp-btn" data-q="rsvp" data-v="Not right now" onclick="pickQ(this)">Not right now</button>
     </div>
@@ -863,6 +864,8 @@ function pickQ(btn) {
   const wasSelected = btn.classList.contains('sel');
   document.querySelectorAll(`.rsvp-btn[data-q="${q}"]`).forEach(b => b.classList.remove('sel'));
   if (!wasSelected) btn.classList.add('sel');
+  const prompt = document.getElementById('rsvpPrompt');
+  if (prompt) prompt.style.display = 'none';
   as();
   updateBottomBar();
 }
@@ -952,6 +955,8 @@ function restore() {
   if (S.rsvp) {
     const b = document.querySelector(`.rsvp-btn[data-q="rsvp"][data-v="${S.rsvp}"]`);
     if (b) b.classList.add('sel');
+    const prompt = document.getElementById('rsvpPrompt');
+    if (prompt) prompt.style.display = 'none';
   }
   if (S.spa && S.spa.length) S.spa.forEach(n => {
     const c = document.querySelector(`[data-spa="${n}"]`);
