@@ -180,6 +180,14 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .btn-primary{background:var(--text);color:#fff}
 .btn-primary:hover{opacity:.9}
 .auto-save-note{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;color:var(--text-soft)}
+.rsvp-bar{display:flex;align-items:center;gap:12px;width:100%;max-width:600px;justify-content:space-between;flex-wrap:wrap}
+.rsvp-bar-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;font-weight:600;color:var(--text)}
+.rsvp-bar-btns{display:flex;gap:8px}
+.rsvp-bar-yes{padding:0 28px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;border:none;min-height:50px;background:var(--sage);color:#fff;transition:opacity .15s;letter-spacing:.3px}
+.rsvp-bar-yes:hover{opacity:.9}
+.rsvp-bar-no{padding:0 18px;border-radius:12px;font-size:14px;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;border:1.5px solid var(--border);min-height:50px;background:#fff;color:var(--text-soft);transition:border-color .15s}
+.rsvp-bar-no:hover{border-color:var(--text-soft)}
+.save-bar{display:flex;flex-direction:column;align-items:center;gap:6px}
 .last-saved{text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;color:var(--text-soft);margin-top:8px;min-height:18px}
 
 @media(prefers-reduced-motion:reduce){
@@ -557,9 +565,18 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 </div><!-- /container -->
 
 <!-- ===== BOTTOM BAR ===== -->
-<div class="bottom-bar">
-  <button class="btn-primary" onclick="save(true)">Save my answers</button>
-  <span class="auto-save-note">Your answers also save automatically</span>
+<div class="bottom-bar" id="bottomBar">
+  <div id="rsvpBar" class="rsvp-bar">
+    <span class="rsvp-bar-text">Can I book this for you?</span>
+    <div class="rsvp-bar-btns">
+      <button class="rsvp-bar-yes" onclick="rsvpYes()">Yes, I'm in</button>
+      <button class="rsvp-bar-no" onclick="rsvpNo()">Not right now</button>
+    </div>
+  </div>
+  <div id="saveBar" class="save-bar" style="display:none">
+    <button class="btn-primary" onclick="save(true)">Save my answers</button>
+    <span class="auto-save-note">Your answers also save automatically</span>
+  </div>
 </div>
 
 <script>
@@ -599,6 +616,7 @@ function load() {
 }
 
 function save(toast) {
+  const prev = { rsvp: S.rsvp, spa: [...(S.spa||[])], amex: S.amex, notes: S.notes, spaN: S.spaN };
   const rv = document.querySelector('.rsvp-btn.sel[data-q="rsvp"]');
   S.rsvp = rv ? rv.dataset.v : '';
   S.spa = [];
@@ -609,6 +627,15 @@ function save(toast) {
   S.ts = new Date().toISOString();
   localStorage.setItem(K, JSON.stringify(S));
   updateTS();
+  // log changes
+  if (prev.rsvp !== S.rsvp && S.rsvp) logChange('RSVP: ' + S.rsvp);
+  if (prev.amex !== S.amex) logChange('AMEX app: ' + (S.amex ? 'done' : 'undone'));
+  const added = S.spa.filter(s => !prev.spa.includes(s));
+  const removed = prev.spa.filter(s => !S.spa.includes(s));
+  added.forEach(s => logChange('Added spa: ' + s));
+  removed.forEach(s => logChange('Removed spa: ' + s));
+  if (prev.spaN !== S.spaN && S.spaN) logChange('Spa notes updated');
+  if (prev.notes !== S.notes && S.notes) logChange('Other notes updated');
   if (toast) {
     const el = document.getElementById('saveInd');
     el.classList.add('show');
@@ -689,7 +716,9 @@ function addEvent() {
   const time = document.getElementById('addTime').value.trim();
   const desc = document.getElementById('addDesc').value.trim();
   if (di === '' || !time || !desc) return;
+  const dayName = S.cal[parseInt(di)].name;
   S.cal[parseInt(di)].events.push({ time, desc, type: 'personal' });
+  logChange('Added to ' + dayName + ': ' + time + ' ' + desc);
   document.getElementById('addDay').value = '';
   document.getElementById('addTime').value = '';
   document.getElementById('addDesc').value = '';
@@ -728,6 +757,38 @@ function pickQ(btn) {
   document.querySelectorAll(`.rsvp-btn[data-q="${q}"]`).forEach(b => b.classList.remove('sel'));
   if (!wasSelected) btn.classList.add('sel');
   as();
+  updateBottomBar();
+}
+
+// ===== STICKY RSVP BAR =====
+function rsvpYes() {
+  const btn = document.querySelector('.rsvp-btn[data-v="Yes, I\'m in"]');
+  if (btn) { document.querySelectorAll('.rsvp-btn[data-q="rsvp"]').forEach(b => b.classList.remove('sel')); btn.classList.add('sel'); }
+  logChange('RSVP: Yes, I\'m in');
+  as();
+  updateBottomBar();
+}
+function rsvpNo() {
+  const btn = document.querySelector('.rsvp-btn[data-v="Not right now"]');
+  if (btn) { document.querySelectorAll('.rsvp-btn[data-q="rsvp"]').forEach(b => b.classList.remove('sel')); btn.classList.add('sel'); }
+  logChange('RSVP: Not right now');
+  as();
+  updateBottomBar();
+}
+function updateBottomBar() {
+  const hasRsvp = S.rsvp || document.querySelector('.rsvp-btn.sel[data-q="rsvp"]');
+  document.getElementById('rsvpBar').style.display = hasRsvp ? 'none' : 'flex';
+  document.getElementById('saveBar').style.display = hasRsvp ? 'flex' : 'none';
+}
+
+// ===== CHANGELOG =====
+const LOG_KEY = 'ferrell-chi-log';
+function logChange(what) {
+  let log = [];
+  try { log = JSON.parse(localStorage.getItem(LOG_KEY) || '[]'); } catch(e) {}
+  log.push({ what, when: new Date().toISOString() });
+  if (log.length > 200) log = log.slice(-200);
+  localStorage.setItem(LOG_KEY, JSON.stringify(log));
 }
 
 // ===== PHOTO CAROUSELS =====
@@ -773,6 +834,7 @@ function restore() {
 
 // ===== INIT =====
 restore();
+updateBottomBar();
 initCarousel('hotelCarousel', 'hotelDots');
 initCarousel('roomCarousel', 'roomDots');
 initCarousel('spaCarousel', 'spaDots');
