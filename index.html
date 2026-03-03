@@ -47,6 +47,11 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .card-label{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-soft);margin-bottom:14px;font-weight:600}
 .card h2{font-size:22px;font-weight:400;margin-bottom:6px}
 .card p{font-size:15px;color:var(--text-soft);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6}
+.card-label.toggle{cursor:pointer;display:flex;justify-content:space-between;align-items:center;-webkit-user-select:none;user-select:none}
+.card-label.toggle::after{content:'▾';font-size:14px;transition:transform .3s}
+.card.collapsed .card-label.toggle::after{transform:rotate(-90deg)}
+.card.collapsed{padding:16px 24px}
+.card.collapsed > *:not(.card-label){display:none !important}
 
 /* ===== PERSONAL MESSAGE ===== */
 .message-card{background:linear-gradient(135deg,var(--cream),#f5f0ea);border:1px solid var(--border);text-align:center;padding:40px 28px}
@@ -196,6 +201,22 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .save-bar{display:flex;flex-direction:column;align-items:center;gap:6px}
 .last-saved{text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;color:var(--text-soft);margin-top:8px;min-height:18px}
 
+/* ===== ACTIVITY LOG ===== */
+.status-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.status-item{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:var(--cream);border-radius:10px;font-family:-apple-system,sans-serif;font-size:14px}
+.status-label{color:var(--text-soft)}
+.status-val{font-weight:600}
+.status-val.pending{color:var(--text-soft);font-style:italic;font-weight:400}
+.status-val.done{color:var(--sage)}
+.log-section{margin-top:16px}
+.log-section-title{font-family:-apple-system,sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-soft);margin-bottom:8px}
+.log-entries{max-height:300px;overflow-y:auto;font-family:-apple-system,sans-serif;font-size:13px}
+.log-entry{padding:8px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:12px}
+.log-entry:last-child{border:none}
+.log-what{color:var(--text);flex:1}
+.log-when{color:var(--text-soft);white-space:nowrap;font-size:12px}
+.log-empty{color:var(--text-soft);font-style:italic;padding:8px 0}
+
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none !important}
@@ -266,7 +287,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
     <div class="step-num">2</div>
     <div class="step-when">When you're ready</div>
     <div class="step-title">Pick your spa treatments</div>
-    <div class="step-body">Scroll down to the spa section and check off whatever sounds good. This isn't about fixing anything — it's about giving yourself somewhere quiet to just be. I'll handle the booking.</div>
+    <div class="step-body"><a href="#spaSection" style="color:var(--sage);font-weight:600;text-decoration:none;border-bottom:1px solid var(--sage)">Browse the spa menu</a> and check off whatever sounds good. This isn't about fixing anything — it's about giving yourself somewhere quiet to just be. I'll handle the booking.</div>
   </div>
 
   <!-- STEP 3: AMEX -->
@@ -287,7 +308,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 
 <!-- ===== HOTEL ===== -->
 <div class="card">
-  <div class="card-label">Where you're staying</div>
+  <div class="card-label toggle" onclick="toggleCard(this)">Where you're staying</div>
   <div class="photo-carousel" id="hotelCarousel">
     <img src="property2.png" alt="Waldorf lobby with fireplace" loading="lazy">
     <img src="property3.png" alt="Waldorf bar lounge" loading="lazy">
@@ -311,7 +332,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 
 <!-- ===== YOUR ROOM ===== -->
 <div class="card">
-  <div class="card-label">Your room</div>
+  <div class="card-label toggle" onclick="toggleCard(this)">Your room</div>
   <div class="photo-carousel" id="roomCarousel">
     <img src="room1.png" alt="Bedroom with city view" loading="lazy">
     <img src="room2.png" alt="Living area with fireplace" loading="lazy">
@@ -324,7 +345,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 
 <!-- ===== YOUR WEEK ===== -->
 <div class="card">
-  <div class="card-label">Your week</div>
+  <div class="card-label toggle" onclick="toggleCard(this)">Your week</div>
   <p style="margin-bottom:14px">Swipe through each day. Appointments are pre-loaded — add anything else you'd like.</p>
 
   <div class="cal-carousel" id="calCarousel"></div>
@@ -349,7 +370,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 
 <!-- ===== APPOINTMENTS ===== -->
 <div class="card">
-  <div class="card-label">Your appointments</div>
+  <div class="card-label toggle" onclick="toggleCard(this)">Your appointments</div>
   <a href="https://www.google.com/maps/dir/?api=1&origin=Waldorf+Astoria+Chicago,+11+E+Walton+St,+Chicago,+IL+60611&destination=675+N+St+Clair+St,+Chicago,+IL+60611&travelmode=walking" target="_blank" class="map-btn">📍 Open walking directions — Hotel to Northwestern</a>
 
   <div class="appt-block">
@@ -546,7 +567,7 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 
 <!-- ===== SPA AMENITIES ===== -->
 <div class="card">
-  <div class="card-label">Included with your spa visit</div>
+  <div class="card-label toggle" onclick="toggleCard(this)">Included with your spa visit</div>
   <p>Book any 60+ min treatment and enjoy all of this for the full day.</p>
   <div class="fac-grid">
     <span class="fac-tag">Heated Lap Pool</span>
@@ -564,6 +585,16 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
   <div class="card-label">Other notes or requests</div>
   <p style="margin-bottom:12px">Food, places you want to go, questions, anything at all.</p>
   <textarea class="notes-area" id="otherNotes" placeholder="Write anything here..." aria-label="Other notes and requests"></textarea>
+</div>
+
+<!-- ===== ACTIVITY LOG ===== -->
+<div class="card" id="activityCard">
+  <div class="card-label toggle" onclick="toggleCard(this)">Activity</div>
+  <div class="status-grid" id="statusGrid"></div>
+  <div class="log-section">
+    <div class="log-section-title">Timeline</div>
+    <div class="log-entries" id="logEntries"></div>
+  </div>
 </div>
 
 <div class="last-saved" id="lastSaved"></div>
@@ -656,6 +687,7 @@ function save(toast) {
     el.classList.add('show');
     setTimeout(() => el.classList.remove('show'), 2200);
   }
+  renderActivity();
 }
 
 function updateTS() {
@@ -674,6 +706,11 @@ document.addEventListener('change', as);
 function toggleAmex() {
   document.getElementById('amexCheck').classList.toggle('done');
   as();
+}
+
+// ===== COLLAPSIBLE CARDS =====
+function toggleCard(el) {
+  el.closest('.card').classList.toggle('collapsed');
 }
 
 // ===== SPA ACCORDIONS =====
@@ -861,6 +898,32 @@ function logChange(what) {
   localStorage.setItem(LOG_KEY, JSON.stringify(log));
 }
 
+// ===== ACTIVITY LOG =====
+function renderActivity() {
+  const sg = document.getElementById('statusGrid');
+  if (!sg) return;
+  const rsvp = S.rsvp;
+  const spaCount = (S.spa || []).length;
+  const amex = S.amex;
+  const ts = S.ts;
+  sg.innerHTML =
+    `<div class="status-item"><span class="status-label">RSVP</span><span class="status-val ${rsvp ? 'done' : 'pending'}">${rsvp || 'Waiting for answer'}</span></div>` +
+    `<div class="status-item"><span class="status-label">Spa picks</span><span class="status-val ${spaCount ? 'done' : 'pending'}">${spaCount ? spaCount + ' selected' : 'None yet'}</span></div>` +
+    `<div class="status-item"><span class="status-label">AMEX app</span><span class="status-val ${amex ? 'done' : 'pending'}">${amex ? 'Set up' : 'Not yet'}</span></div>` +
+    `<div class="status-item"><span class="status-label">Last active</span><span class="status-val ${ts ? '' : 'pending'}">${ts ? new Date(ts).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) : 'No activity yet'}</span></div>`;
+  const le = document.getElementById('logEntries');
+  let log = [];
+  try { log = JSON.parse(localStorage.getItem(LOG_KEY) || '[]'); } catch(e) {}
+  if (log.length) {
+    le.innerHTML = [...log].reverse().map(e => {
+      const d = new Date(e.when);
+      return `<div class="log-entry"><span class="log-what">${e.what}</span><span class="log-when">${d.toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}</span></div>`;
+    }).join('');
+  } else {
+    le.innerHTML = '<div class="log-empty">No activity yet — this updates as she interacts with the page</div>';
+  }
+}
+
 // ===== PHOTO CAROUSELS =====
 function initCarousel(carouselId, dotsId) {
   const carousel = document.getElementById(carouselId);
@@ -904,6 +967,7 @@ function restore() {
 
 // ===== INIT =====
 restore();
+renderActivity();
 updateBottomBar();
 initCarousel('hotelCarousel', 'hotelDots');
 initCarousel('roomCarousel', 'roomDots');
