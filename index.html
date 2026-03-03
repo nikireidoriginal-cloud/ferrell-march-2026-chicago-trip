@@ -149,9 +149,8 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .spa-item label{flex:1;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:44px}
 .spa-item input[type=checkbox]{width:22px;height:22px;accent-color:var(--sage);cursor:pointer;flex-shrink:0}
 .spa-schedule{display:flex;gap:8px;padding:6px 0 10px 34px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;align-items:center;animation:fadeIn .25s ease}
-.spa-schedule select,.spa-schedule input{font-size:14px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-family:-apple-system,sans-serif;min-height:40px}
-.spa-schedule select{flex:1;max-width:130px}
-.spa-schedule input[type=time]{flex:1;max-width:120px}
+.spa-schedule input[type=text]{font-size:14px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-family:-apple-system,sans-serif;min-height:40px;flex:1}
+.spa-schedule input[type=text]:focus{outline:none;border-color:var(--warm)}
 .spa-schedule .sched-label{color:var(--text-soft);font-size:12px;white-space:nowrap}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 .spa-item .meta{text-align:right;flex-shrink:0;margin-left:8px}
@@ -162,7 +161,13 @@ body{font-family:'Georgia','Times New Roman',serif;background:var(--bg);color:va
 .spa-notes:focus{outline:none;border-color:var(--warm)}
 .spa-summary{background:var(--sage-light);border-radius:12px;padding:18px;margin-top:14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;display:none}
 .spa-summary.vis{display:block}
-.spa-summary h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;color:var(--sage)}
+.spa-summary h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;color:var(--sage)}
+.spa-summary table{width:100%;border-collapse:collapse}
+.spa-summary th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-soft);font-weight:600;padding:0 0 6px;border-bottom:1px solid rgba(125,154,140,.25)}
+.spa-summary td{padding:8px 0;border-bottom:1px solid rgba(125,154,140,.15);font-size:14px;vertical-align:top}
+.spa-summary tr:last-child td{border:none}
+.spa-summary td.spa-sum-name{color:var(--text)}
+.spa-summary td.spa-sum-when{color:var(--sage);font-size:13px;text-align:right;white-space:nowrap;padding-left:12px}
 
 /* ===== FACILITIES ===== */
 .fac-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
@@ -640,7 +645,7 @@ function save(toast) {
   if (!S.spaSchedule) S.spaSchedule = {};
   document.querySelectorAll('.spa-schedule').forEach(row => {
     const name = row.dataset.schedFor;
-    S.spaSchedule[name] = { day: row.querySelector('select').value, time: row.querySelector('input[type=time]').value };
+    S.spaSchedule[name] = { when: row.querySelector('input[type=text]').value };
   });
   // clean up schedule for unchecked items
   Object.keys(S.spaSchedule).forEach(k => { if (!S.spa.includes(k)) delete S.spaSchedule[k]; });
@@ -776,16 +781,7 @@ function spaUpdate() {
         row.dataset.schedFor = name;
         const sched = (S.spaSchedule && S.spaSchedule[name]) || {};
         row.innerHTML = `<span class="sched-label">When?</span>`
-          + `<select onchange="schedChange()" aria-label="Day for ${name}">`
-          + `<option value="">Day...</option>`
-          + `<option value="Fri 3/6"${sched.day==='Fri 3/6'?' selected':''}>Fri 3/6</option>`
-          + `<option value="Sat 3/7"${sched.day==='Sat 3/7'?' selected':''}>Sat 3/7</option>`
-          + `<option value="Sun 3/8"${sched.day==='Sun 3/8'?' selected':''}>Sun 3/8</option>`
-          + `<option value="Mon 3/9"${sched.day==='Mon 3/9'?' selected':''}>Mon 3/9</option>`
-          + `<option value="Tue 3/10"${sched.day==='Tue 3/10'?' selected':''}>Tue 3/10</option>`
-          + `<option value="Wed 3/11"${sched.day==='Wed 3/11'?' selected':''}>Wed 3/11</option>`
-          + `</select>`
-          + `<input type="time" value="${sched.time||''}" onchange="schedChange()" aria-label="Time for ${name}">`;
+          + `<input type="text" value="${sched.when||''}" placeholder="e.g. Sunday afternoon" oninput="schedChange()" aria-label="When for ${name}">`;
         item.after(row);
       }
     } else {
@@ -797,19 +793,15 @@ function spaUpdate() {
   const list = document.getElementById('spaSummaryList');
   if (picks.length) {
     box.classList.add('vis');
-    let h = picks.map(s => {
+    let h = '<table><thead><tr><th>Treatment</th><th style="text-align:right">When</th></tr></thead><tbody>';
+    h += picks.map(s => {
       const sched = (S.spaSchedule && S.spaSchedule[s]) || {};
-      let when = '';
-      if (sched.day || sched.time) {
-        const parts = [];
-        if (sched.day) parts.push(sched.day);
-        if (sched.time) { try { parts.push(new Date('2026-01-01T'+sched.time).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})); } catch(e){ parts.push(sched.time); } }
-        when = ` — <span style="color:var(--sage)">${parts.join(' at ')}</span>`;
-      }
-      return `<div style="padding:3px 0;font-family:-apple-system,sans-serif">· ${s}${when}</div>`;
+      const when = sched.when || '—';
+      return `<tr><td class="spa-sum-name">${s}</td><td class="spa-sum-when">${when}</td></tr>`;
     }).join('');
+    h += '</tbody></table>';
     const n = document.getElementById('spaNotes').value;
-    if (n) h += `<div style="margin-top:8px;font-style:italic;color:var(--text-soft)">"${n}"</div>`;
+    if (n) h += `<div style="margin-top:10px;font-style:italic;color:var(--text-soft);font-size:13px">"${n}"</div>`;
     list.innerHTML = h;
   } else {
     box.classList.remove('vis');
@@ -819,18 +811,13 @@ function spaUpdate() {
 }
 
 function schedChange() {
-  // collect all schedule data from DOM
   if (!S.spaSchedule) S.spaSchedule = {};
   document.querySelectorAll('.spa-schedule').forEach(row => {
     const name = row.dataset.schedFor;
-    const day = row.querySelector('select').value;
-    const time = row.querySelector('input[type=time]').value;
+    const when = row.querySelector('input[type=text]').value;
     const prev = S.spaSchedule[name] || {};
-    S.spaSchedule[name] = { day, time };
-    if (day && day !== prev.day) logChange('Spa schedule: ' + name + ' → ' + day);
-    if (time && time !== prev.time) {
-      try { const t = new Date('2026-01-01T'+time).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}); logChange('Spa time: ' + name + ' → ' + t); } catch(e){}
-    }
+    S.spaSchedule[name] = { when };
+    if (when && when !== prev.when) logChange('Spa schedule: ' + name + ' → ' + when);
   });
   spaUpdate();
 }
